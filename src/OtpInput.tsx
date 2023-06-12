@@ -23,11 +23,12 @@ export interface OtpInputProps {
   focusStickBlinkingDuration?: number;
 }
 
-export interface OtpInputInstance {
+export interface OtpInputRef {
   clear: () => void;
+  setValue: (value: string) => void;
 }
 
-export const OtpInput = forwardRef<OtpInputInstance, OtpInputProps>(
+export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>(
   (
     {
       onTextChange,
@@ -58,7 +59,7 @@ export const OtpInput = forwardRef<OtpInputInstance, OtpInputProps>(
     const clear = () => {
       setText("");
     };
-    useImperativeHandle(ref, () => ({ clear }));
+    useImperativeHandle(ref, () => ({ clear, setValue: setText }));
 
     return (
       <View style={[styles.container, containerStyle]}>

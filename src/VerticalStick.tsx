@@ -9,7 +9,7 @@ import {
 
 interface VerticalStickProps {
   focusColor?: ColorValue;
-  style: ViewStyle;
+  style?: ViewStyle;
   focusStickBlinkingDuration?: number;
 }
 

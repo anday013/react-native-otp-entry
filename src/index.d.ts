@@ -9,9 +9,12 @@ declare module "OTPInput" {
     inputsContainerStyle?: ViewStyle;
     pinCodeContainerStyle?: ViewStyle;
     pinCodeTextStyle?: TextStyle;
+    focusStickStyle?: ViewStyle;
+    focusStickBlinkingDuration?: number;
   }
 
-  export interface OtpInputInstance {
+  export interface OtpInputRef {
     clear: () => void;
+    setValue: (value: string) => void;
   }
 }
