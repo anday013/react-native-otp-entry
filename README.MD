@@ -47,7 +47,7 @@ yarn add react-native-otp-entry
 3. Customize the styling as per your requirements:
 
    ```javascript
-    <OTPEntry
+    <OTPInput
         numberOfDigits={6}
         focusColor="green"
         onTextChange={text => console.log(text)}
