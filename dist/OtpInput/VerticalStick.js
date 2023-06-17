@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerticalStick = void 0;
 const react_1 = require("react");
 const react_native_1 = require("react-native");
+const OtpInput_styles_1 = require("./OtpInput.styles");
 exports.VerticalStick = (0, react_1.memo)(({ focusColor, style, focusStickBlinkingDuration = 350 }) => {
     const opacityAnim = (0, react_1.useRef)(new react_native_1.Animated.Value(1)).current;
     (0, react_1.useEffect)(() => {
@@ -23,16 +24,9 @@ exports.VerticalStick = (0, react_1.memo)(({ focusColor, style, focusStickBlinki
     }, []);
     return (<react_native_1.Animated.View style={{ opacity: opacityAnim }}>
         <react_native_1.View style={[
-            styles.stick,
+            OtpInput_styles_1.styles.stick,
             focusColor ? { backgroundColor: focusColor } : {},
             style,
         ]}/>
       </react_native_1.Animated.View>);
-});
-const styles = react_native_1.StyleSheet.create({
-    stick: {
-        width: 2,
-        height: 30,
-        backgroundColor: "green",
-    },
 });

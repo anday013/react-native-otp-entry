@@ -8,9 +8,14 @@ declare module "OTPInput" {
     numberOfDigits: number;
 
     /**
-     * The color of the input field border and stick when it is focused. 
+     * The color of the input field border and stick when it is focused.
      */
     focusColor?: ColorValue;
+
+    /**
+     * The theme to be applied to the OTP entry.
+     */
+    theme?: Theme;
 
     /**
      * A callback function that is invoked when the OTP text changes.
@@ -18,6 +23,26 @@ declare module "OTPInput" {
      */
     onTextChange?: (text: string) => void;
 
+    /**
+     * The duration (in milliseconds) for the focus stick to blink.
+     */
+    focusStickBlinkingDuration?: number;
+  }
+
+  export interface OtpInputRef {
+    /**
+     * Clears the value of the OTP input.
+     */
+    clear: () => void;
+
+    /**
+     * Sets the value of the OTP input.
+     * @param value - The value to be set.
+     */
+    setValue: (value: string) => void;
+  }
+
+  export interface Theme {
     /**
      * Custom styles for the root `View`.
      */
@@ -42,23 +67,5 @@ declare module "OTPInput" {
      * Custom styles for the focus stick, which indicates the focused input field.
      */
     focusStickStyle?: ViewStyle;
-
-    /**
-     * The duration (in milliseconds) for the focus stick to blink.
-     */
-    focusStickBlinkingDuration?: number;
-  }
-
-  export interface OtpInputRef {
-    /**
-     * Clears the value of the OTP input.
-     */
-    clear: () => void;
-
-    /**
-     * Sets the value of the OTP input.
-     * @param value - The value to be set.
-     */
-    setValue: (value: string) => void;
   }
 }

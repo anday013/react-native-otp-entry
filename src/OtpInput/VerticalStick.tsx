@@ -2,10 +2,10 @@ import { memo, useEffect, useRef } from "react";
 import {
   Animated,
   ColorValue,
-  StyleSheet,
   View,
   ViewStyle,
 } from "react-native";
+import { styles } from "./OtpInput.styles";
 
 interface VerticalStickProps {
   focusColor?: ColorValue;
@@ -50,11 +50,3 @@ export const VerticalStick: React.FC<VerticalStickProps> = memo(
     );
   }
 );
-
-const styles = StyleSheet.create({
-  stick: {
-    width: 2,
-    height: 30,
-    backgroundColor: "green",
-  },
-});
