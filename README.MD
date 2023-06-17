@@ -71,12 +71,18 @@ The `react-native-otp-entry` component accepts the following props:
 | `numberOfDigits`               | number                          | The number of digits to be displayed in the OTP entry.                                                                                            |
 | `focusColor`                   | ColorValue                      | The color of the input field border and stick when it is focused.                                                                                                  |
 | `onTextChange`                 | (text: string) => void          | A callback function that is invoked when the OTP text changes. It receives the updated text as an argument.                                        |
+| `theme`               | Theme                       | Custom styles for each element.                                                                                         |
+| `focusStickBlinkingDuration`   | number                          | The duration (in milliseconds) for the focus stick to blink.                                                     |
+
+
+
+| Theme                           | Type                            | Description                                                                                                                                       |
+| ------------------------------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `containerStyle`               | ViewStyle                       | Custom styles for the root `View`.                                                                                         |
 | `inputsContainerStyle`         | ViewStyle                       | Custom styles for the container that holds the input fields.                                                                                      |
 | `pinCodeContainerStyle`        | ViewStyle                       | Custom styles for the container that wraps each individual digit in the OTP entry.                                                                |
 | `pinCodeTextStyle`             | TextStyle                       | Custom styles for the text within each individual digit in the OTP entry.                                                                         |
 | `focusStickStyle`              | ViewStyle                       | Custom styles for the focus stick, which indicates the focused input field.                                                                       |
-| `focusStickBlinkingDuration`   | number                          | The duration (in milliseconds) for the focus stick to blink.                                                     |
 
 Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
 
