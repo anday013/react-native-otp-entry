@@ -28,6 +28,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^18.2.12",
+    "prettier": "^3.0.2",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "typescript": "^5.1.3"
