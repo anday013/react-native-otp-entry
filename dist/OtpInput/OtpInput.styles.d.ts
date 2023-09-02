@@ -11,14 +11,13 @@ export declare const styles: {
         borderWidth: number;
         borderRadius: number;
         borderColor: string;
-        height: number;
-        width: number;
+        minHeight: number;
+        minWidth: number;
         justifyContent: "center";
         alignItems: "center";
     };
     codeText: {
         fontSize: number;
-        lineHeight: number;
     };
     hiddenInput: {
         width: number;

@@ -15,14 +15,13 @@ exports.styles = react_native_1.StyleSheet.create({
         borderWidth: 1,
         borderRadius: 12,
         borderColor: "#DFDFDE",
-        height: 60,
-        width: 44,
+        minHeight: 60,
+        minWidth: 44,
         justifyContent: "center",
         alignItems: "center",
     },
     codeText: {
         fontSize: 28,
-        lineHeight: 38,
     },
     hiddenInput: {
         width: 1,
