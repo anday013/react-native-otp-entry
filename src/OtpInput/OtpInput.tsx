@@ -1,9 +1,9 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
-import { VerticalStick } from "./VerticalStick";
-import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
-import { useOtpInput } from "./useOtpInput";
 import { styles } from "./OtpInput.styles";
+import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
+import { VerticalStick } from "./VerticalStick";
+import { useOtpInput } from "./useOtpInput";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
@@ -13,6 +13,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   } = useOtpInput(props);
   const {
     numberOfDigits,
+    hideStick,
     focusColor = "#A4D0A4",
     focusStickBlinkingDuration,
     theme = {},
@@ -42,22 +43,18 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                 onPress={handlePress}
                 style={[
                   styles.codeContainer,
-                  focusColor && isFocusedInput
-                    ? { borderColor: focusColor }
-                    : {},
+                  focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                   pinCodeContainerStyle,
                 ]}
               >
-                {isFocusedInput ? (
+                {isFocusedInput && !hideStick ? (
                   <VerticalStick
                     focusColor={focusColor}
                     style={focusStickStyle}
                     focusStickBlinkingDuration={focusStickBlinkingDuration}
                   />
                 ) : (
-                  <Text style={[styles.codeText, pinCodeTextStyle]}>
-                    {char}
-                  </Text>
+                  <Text style={[styles.codeText, pinCodeTextStyle]}>{char}</Text>
                 )}
               </Pressable>
             );
