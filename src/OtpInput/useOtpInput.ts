@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { TextInput } from "react-native";
+import { Keyboard, TextInput } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
 
 export const useOtpInput = ({ onTextChange }: OtpInputProps) => {
@@ -8,6 +8,10 @@ export const useOtpInput = ({ onTextChange }: OtpInputProps) => {
   const focusedInputIndex = text.length;
 
   const handlePress = () => {
+    // To fix bug when keyboard is not popping up after being dismissed
+    if (!Keyboard.isVisible()) {
+      Keyboard.dismiss();
+    }
     inputRef.current?.focus();
   };
 
