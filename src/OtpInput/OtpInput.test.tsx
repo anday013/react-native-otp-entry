@@ -1,0 +1,84 @@
+import { act, fireEvent, render, screen } from "@testing-library/react-native";
+import * as React from "react";
+import { OtpInput } from "./OtpInput";
+import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
+
+const renderOtpInput = (props?: Partial<OtpInputProps>) =>
+  render(<OtpInput numberOfDigits={6} {...props} />);
+
+describe("OtpInput", () => {
+  describe("UI", () => {
+    test("should render correctly", () => {
+      const tree = renderOtpInput().toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
+
+    test("should render stick if hideStick is false", () => {
+      renderOtpInput({ hideStick: false });
+
+      const stick = screen.getByTestId("otp-input-stick");
+
+      expect(stick).toBeTruthy();
+    });
+
+    // Test if the number of rendered inputs is equal to the number of digits
+    test.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])(
+      "should render the correct number of inputs: %i",
+      (numberOfDigits) => {
+        renderOtpInput({ numberOfDigits: numberOfDigits });
+
+        const inputs = screen.getAllByTestId("otp-input");
+
+        expect(inputs).toHaveLength(numberOfDigits);
+      }
+    );
+  });
+
+  describe("Logic", () => {
+    test("should split text on screen from the text written in the hidden input", () => {
+      const otp = "123456";
+      renderOtpInput();
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, otp);
+
+      act(() => {
+        expect(screen.getByText("1")).toBeTruthy();
+        expect(screen.getByText("2")).toBeTruthy();
+        expect(screen.getByText("3")).toBeTruthy();
+        expect(screen.getByText("4")).toBeTruthy();
+        expect(screen.getByText("5")).toBeTruthy();
+        expect(screen.getByText("6")).toBeTruthy();
+        expect(screen.queryByText(otp)).not.toBeTruthy();
+      });
+    });
+
+    test("ref clear() should clear input", () => {
+      const ref = React.createRef<OtpInputRef>();
+
+      render(<OtpInput ref={ref} numberOfDigits={6} />);
+      const otp = "1";
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, otp);
+
+      act(() => {
+        ref.current?.clear();
+      });
+      expect(screen.queryByText("1")).toBeFalsy();
+    });
+
+    test("ref setValue() should set input value", () => {
+      const ref = React.createRef<OtpInputRef>();
+
+      render(<OtpInput ref={ref} numberOfDigits={6} />);
+      const otp = "1";
+
+      act(() => {
+        ref.current?.setValue(otp);
+      });
+      expect(screen.getByText("1")).toBeTruthy();
+    });
+  });
+});
