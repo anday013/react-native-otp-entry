@@ -22,11 +22,11 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
                     OtpInput_styles_1.styles.codeContainer,
                     focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                     pinCodeContainerStyle,
-                ]}>
+                ]} testID="otp-input">
                 {isFocusedInput && !hideStick ? (<VerticalStick_1.VerticalStick focusColor={focusColor} style={focusStickStyle} focusStickBlinkingDuration={focusStickBlinkingDuration}/>) : (<react_native_1.Text style={[OtpInput_styles_1.styles.codeText, pinCodeTextStyle]}>{char}</react_native_1.Text>)}
               </react_native_1.Pressable>);
         })}
       </react_native_1.View>
-      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" ref={inputRef} autoFocus style={OtpInput_styles_1.styles.hiddenInput}/>
+      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" ref={inputRef} autoFocus style={OtpInput_styles_1.styles.hiddenInput} testID="otp-input-hidden"/>
     </react_native_1.View>);
 });

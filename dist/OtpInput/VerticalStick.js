@@ -23,10 +23,6 @@ exports.VerticalStick = (0, react_1.memo)(({ focusColor, style, focusStickBlinki
         }).start();
     }, []);
     return (<react_native_1.Animated.View style={{ opacity: opacityAnim }}>
-        <react_native_1.View style={[
-            OtpInput_styles_1.styles.stick,
-            focusColor ? { backgroundColor: focusColor } : {},
-            style,
-        ]}/>
+        <react_native_1.View style={[OtpInput_styles_1.styles.stick, focusColor ? { backgroundColor: focusColor } : {}, style]} testID="otp-input-stick"/>
       </react_native_1.Animated.View>);
 });
