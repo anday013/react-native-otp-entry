@@ -1,10 +1,5 @@
 import { memo, useEffect, useRef } from "react";
-import {
-  Animated,
-  ColorValue,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Animated, ColorValue, View, ViewStyle } from "react-native";
 import { styles } from "./OtpInput.styles";
 
 interface VerticalStickProps {
@@ -40,11 +35,8 @@ export const VerticalStick: React.FC<VerticalStickProps> = memo(
     return (
       <Animated.View style={{ opacity: opacityAnim }}>
         <View
-          style={[
-            styles.stick,
-            focusColor ? { backgroundColor: focusColor } : {},
-            style,
-          ]}
+          style={[styles.stick, focusColor ? { backgroundColor: focusColor } : {}, style]}
+          testID="otp-input-stick"
         />
       </Animated.View>
     );
