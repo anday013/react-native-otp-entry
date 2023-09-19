@@ -12,4 +12,4 @@ jobs:
       - run: npm install
       - run: npm run test:coverage
       - name: Update Coverage Badge
-        uses: we-cli/coverage-badge-action@main
+        uses: we-cli/coverage-badge-action@v1.0.1
