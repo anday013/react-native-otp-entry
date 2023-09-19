@@ -14,4 +14,6 @@ module.exports = {
     ],
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  modulePathIgnorePatterns: ["<rootDir>/dist/"],
+  coverageReporters: ["json-summary", "html"],
 };
