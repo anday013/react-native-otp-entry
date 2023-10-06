@@ -1,10 +1,9 @@
 # react-native-otp-entry
 
-[![npm version](https://badge.fury.io/js/react-native-otp-entry.svg)](https://badge.fury.io/js/react-native-otp-entry)
-[![npm](https://img.shields.io/npm/dm/react-native-otp-entry.svg)]()
-[![cov](https://anday013.github.io/react-native-otp-entry/badges/coverage.svg)](https://github.com/anday013/react-native-otp-entry/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE)
-
+[![npm version](https://badge.fury.io/js/react-native-otp-entry.svg?&kill_cache=1)](https://badge.fury.io/js/react-native-otp-entry)
+[![npm](https://img.shields.io/npm/dm/react-native-otp-entry.svg?&kill_cache=1)]()
+[![cov](https://anday013.github.io/react-native-otp-entry/badges/coverage.svg?&kill_cache=1)](https://github.com/anday013/react-native-otp-entry/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?&kill_cache=1)](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE)
 `react-native-otp-entry` is a simple and highly customizable React Native component for entering OTP (One-Time Password). It provides an intuitive and user-friendly interface for inputting one-time passwords in your React Native applications.
 
 ![Demo](otp_demo.gif)
