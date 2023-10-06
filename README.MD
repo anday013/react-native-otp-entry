@@ -30,13 +30,13 @@ yarn add react-native-otp-entry
 
 ## Usage
 
-1. Import the `OTPInput` component from `react-native-otp-entry`:
+1. Import the `OtpInput` component from `react-native-otp-entry`:
 
    ```javascript
-   import { OTPInput } from "react-native-otp-entry";
+   import { OtpInput } from "react-native-otp-entry";
    ```
 
-2. Render the `OTPInputView` component in your screen/component:
+2. Render the `OtpInput` component in your screen/component:
 
    ```jsx
    <OtpInput numberOfDigits={6} onTextChange={(text) => console.log(text)} />
@@ -45,16 +45,18 @@ yarn add react-native-otp-entry
 3. Customize the styling as per your requirements:
 
    ```javascript
-   <OTPInput
+   <OtpInput
      numberOfDigits={6}
      focusColor="green"
-     onTextChange={(text) => console.log(text)}
-     containerStyle={styles.container}
-     inputsContainerStyle={styles.inputsContainer}
-     pinCodeContainerStyle={styles.pinCodeContainer}
-     pinCodeTextStyle={styles.pinCodeText}
-     focusStickStyle={styles.focusStick}
      focusStickBlinkingDuration={500}
+     onTextChange={(text) => console.log(text)}
+     theme={{
+       containerStyle={styles.container},
+       inputsContainerStyle={styles.inputsContainer},
+       pinCodeContainerStyle={styles.pinCodeContainer},
+       pinCodeTextStyle={styles.pinCodeText},
+       focusStickStyle={styles.focusStick}
+     }}
    />
    ```
 
