@@ -20,8 +20,8 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
             const isFocusedInput = index === focusedInputIndex;
             return (<react_native_1.Pressable key={`${char}-${index}`} onPress={handlePress} style={[
                     OtpInput_styles_1.styles.codeContainer,
-                    focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                     pinCodeContainerStyle,
+                    focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                 ]} testID="otp-input">
                 {isFocusedInput && !hideStick ? (<VerticalStick_1.VerticalStick focusColor={focusColor} style={focusStickStyle} focusStickBlinkingDuration={focusStickBlinkingDuration}/>) : (<react_native_1.Text style={[OtpInput_styles_1.styles.codeText, pinCodeTextStyle]}>{char}</react_native_1.Text>)}
               </react_native_1.Pressable>);
