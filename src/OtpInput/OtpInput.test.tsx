@@ -22,6 +22,17 @@ describe("OtpInput", () => {
       expect(stick).toBeTruthy();
     });
 
+    test("focusColor should not be overridden by theme", () => {
+      renderOtpInput({
+        focusColor: "#000",
+        theme: { pinCodeContainerStyle: { borderColor: "#fff" } },
+      });
+
+      const inputs = screen.getAllByTestId("otp-input");
+
+      expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
+    });
+
     // Test if the number of rendered inputs is equal to the number of digits
     test.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])(
       "should render the correct number of inputs: %i",
