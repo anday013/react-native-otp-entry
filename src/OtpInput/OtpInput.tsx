@@ -43,8 +43,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                 onPress={handlePress}
                 style={[
                   styles.codeContainer,
-                  focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                   pinCodeContainerStyle,
+                  focusColor && isFocusedInput ? { borderColor: focusColor } : {},
                 ]}
                 testID="otp-input"
               >
