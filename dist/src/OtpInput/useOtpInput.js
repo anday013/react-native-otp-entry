@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.useOtpInput = void 0;
 const react_1 = require("react");
 const react_native_1 = require("react-native");
-const useOtpInput = ({ onTextChange }) => {
+const useOtpInput = ({ onTextChange, onFilled, numberOfDigits }) => {
     const [text, setText] = (0, react_1.useState)("");
     const inputRef = (0, react_1.useRef)(null);
     const focusedInputIndex = text.length;
@@ -17,6 +17,13 @@ const useOtpInput = ({ onTextChange }) => {
     const handleTextChange = (value) => {
         setText(value);
         onTextChange?.(value);
+        if (value.length === numberOfDigits) {
+            onFilled?.(value);
+        }
+    };
+    const setTextWithRef = (value) => {
+        const normalizedValue = value.length > numberOfDigits ? value.slice(0, numberOfDigits) : value;
+        handleTextChange(normalizedValue);
     };
     const clear = () => {
         setText("");
@@ -24,7 +31,7 @@ const useOtpInput = ({ onTextChange }) => {
     return {
         models: { text, inputRef, focusedInputIndex },
         actions: { handlePress, handleTextChange, clear },
-        forms: { setText },
+        forms: { setText, setTextWithRef },
     };
 };
 exports.useOtpInput = useOtpInput;

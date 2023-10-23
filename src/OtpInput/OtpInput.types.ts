@@ -4,6 +4,7 @@ export interface OtpInputProps {
   numberOfDigits: number;
   focusColor?: ColorValue;
   onTextChange?: (text: string) => void;
+  onFilled?: (text: string) => void;
   hideStick?: boolean;
   focusStickBlinkingDuration?: number;
   theme?: Theme;
