@@ -14,7 +14,9 @@
 - Supports OTP input with a fixed number of digits.
 - Highly customizable appearance and styling.
 - Supports autofill
+- Fully covered with unit tests.
 - Seamless integration with React Native and Expo applications.
+- Fully typed with TypeScript.
 
 ## Installation
 
@@ -50,6 +52,7 @@ yarn add react-native-otp-entry
      focusColor="green"
      focusStickBlinkingDuration={500}
      onTextChange={(text) => console.log(text)}
+     onFilled={(text) => console.log(`OTP is ${text}`)}
      theme={{
        containerStyle={styles.container},
        inputsContainerStyle={styles.inputsContainer},
@@ -64,14 +67,15 @@ yarn add react-native-otp-entry
 
 The `react-native-otp-entry` component accepts the following props:
 
-| Prop                         | Type                   | Description                                                                                                 |
-| ---------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                      |
-| `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                           |
-| `onTextChange`               | (text: string) => void | A callback function that is invoked when the OTP text changes. It receives the updated text as an argument. |
-| `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                           |
-| `theme`                      | Theme                  | Custom styles for each element.                                                                             |
-| `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                |
+| Prop                         | Type                   | Description                                                                                                    |
+| ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                         |
+| `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                              |
+| `onTextChange`               | (text: string) => void | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
+| `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
+| `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                              |
+| `theme`                      | Theme                  | Custom styles for each element.                                                                                |
+| `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
 
 | Theme                   | Type      | Description                                                                        |
 | ----------------------- | --------- | ---------------------------------------------------------------------------------- |
