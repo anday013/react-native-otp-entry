@@ -15,6 +15,14 @@ describe("OtpInput", () => {
             const stick = react_native_1.screen.getByTestId("otp-input-stick");
             expect(stick).toBeTruthy();
         });
+        test("focusColor should not be overridden by theme", () => {
+            renderOtpInput({
+                focusColor: "#000",
+                theme: { pinCodeContainerStyle: { borderColor: "#fff" } },
+            });
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
+        });
         // Test if the number of rendered inputs is equal to the number of digits
         test.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])("should render the correct number of inputs: %i", (numberOfDigits) => {
             renderOtpInput({ numberOfDigits: numberOfDigits });
@@ -57,6 +65,20 @@ describe("OtpInput", () => {
                 ref.current?.setValue(otp);
             });
             expect(react_native_1.screen.getByText("1")).toBeTruthy();
+        });
+        test('ref setValue() should set only the first "numberOfDigits" characters', () => {
+            const ref = React.createRef();
+            (0, react_native_1.render)(<OtpInput_1.OtpInput ref={ref} numberOfDigits={4}/>);
+            const otp = "123456";
+            (0, react_native_1.act)(() => {
+                ref.current?.setValue(otp);
+            });
+            expect(react_native_1.screen.getByText("1")).toBeTruthy();
+            expect(react_native_1.screen.getByText("2")).toBeTruthy();
+            expect(react_native_1.screen.getByText("3")).toBeTruthy();
+            expect(react_native_1.screen.getByText("4")).toBeTruthy();
+            expect(react_native_1.screen.queryByText("5")).toBeFalsy();
+            expect(react_native_1.screen.queryByText("6")).toBeFalsy();
         });
     });
 });

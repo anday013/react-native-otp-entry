@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { TextInput } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
-export declare const useOtpInput: ({ onTextChange }: OtpInputProps) => {
+export declare const useOtpInput: ({ onTextChange, onFilled, numberOfDigits }: OtpInputProps) => {
     models: {
         text: string;
         inputRef: import("react").RefObject<TextInput>;
@@ -14,5 +14,6 @@ export declare const useOtpInput: ({ onTextChange }: OtpInputProps) => {
     };
     forms: {
         setText: import("react").Dispatch<import("react").SetStateAction<string>>;
+        setTextWithRef: (value: string) => void;
     };
 };

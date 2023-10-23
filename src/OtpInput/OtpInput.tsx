@@ -9,7 +9,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex },
     actions: { clear, handlePress, handleTextChange },
-    forms: { setText },
+    forms: {setTextWithRef}
   } = useOtpInput(props);
   const {
     numberOfDigits,
@@ -26,7 +26,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusStickStyle,
   } = theme;
 
-  useImperativeHandle(ref, () => ({ clear, setValue: setText }));
+  useImperativeHandle(ref, () => ({ clear, setValue: setTextWithRef }));
 
   return (
     <View style={[styles.container, containerStyle]}>

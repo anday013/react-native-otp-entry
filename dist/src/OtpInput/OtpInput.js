@@ -7,10 +7,10 @@ const OtpInput_styles_1 = require("./OtpInput.styles");
 const VerticalStick_1 = require("./VerticalStick");
 const useOtpInput_1 = require("./useOtpInput");
 exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
-    const { models: { text, inputRef, focusedInputIndex }, actions: { clear, handlePress, handleTextChange }, forms: { setText }, } = (0, useOtpInput_1.useOtpInput)(props);
+    const { models: { text, inputRef, focusedInputIndex }, actions: { clear, handlePress, handleTextChange }, forms: { setTextWithRef } } = (0, useOtpInput_1.useOtpInput)(props);
     const { numberOfDigits, hideStick, focusColor = "#A4D0A4", focusStickBlinkingDuration, theme = {}, } = props;
     const { containerStyle, inputsContainerStyle, pinCodeContainerStyle, pinCodeTextStyle, focusStickStyle, } = theme;
-    (0, react_1.useImperativeHandle)(ref, () => ({ clear, setValue: setText }));
+    (0, react_1.useImperativeHandle)(ref, () => ({ clear, setValue: setTextWithRef }));
     return (<react_native_1.View style={[OtpInput_styles_1.styles.container, containerStyle]}>
       <react_native_1.View style={[OtpInput_styles_1.styles.inputsContainer, inputsContainerStyle]}>
         {Array(numberOfDigits)
