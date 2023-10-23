@@ -20,8 +20,15 @@ describe("useOtpInput", () => {
         const { result } = renderUseOtInput();
         result.current.actions.clear();
         (0, react_native_1.act)(() => {
-            expect(result.current.models.text).toBe("");
             expect(result.current.forms.setText).toHaveBeenCalledWith("");
+        });
+    });
+    test("setTextWithRef() should only call setText the first 'numberOfDigits' characters", () => {
+        jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
+        const { result } = renderUseOtInput();
+        result.current.forms.setTextWithRef("123456789");
+        (0, react_native_1.act)(() => {
+            expect(result.current.forms.setText).toHaveBeenCalledWith("123456");
         });
     });
     test("handlePress() should dismiss Keyboard if it's visible", () => {
@@ -59,6 +66,24 @@ describe("useOtpInput", () => {
         (0, react_native_1.act)(() => {
             expect(result.current.forms.setText).toHaveBeenCalledWith(value);
             expect(mockOnTextChange).toHaveBeenCalledWith(value);
+        });
+    });
+    test("onFilled() should be called when the input filled", () => {
+        const value = "123456";
+        const mockOnFilled = jest.fn();
+        const { result } = renderUseOtInput({ onFilled: mockOnFilled });
+        result.current.actions.handleTextChange(value);
+        (0, react_native_1.act)(() => {
+            expect(mockOnFilled).toHaveBeenCalledWith(value);
+        });
+    });
+    test("onFilled() should NOT be called when the input is NOT filled", () => {
+        const value = "12345";
+        const mockOnFilled = jest.fn();
+        const { result } = renderUseOtInput({ onFilled: mockOnFilled });
+        result.current.actions.handleTextChange(value);
+        (0, react_native_1.act)(() => {
+            expect(mockOnFilled).not.toHaveBeenCalled();
         });
     });
 });

@@ -91,5 +91,22 @@ describe("OtpInput", () => {
       });
       expect(screen.getByText("1")).toBeTruthy();
     });
+
+    test('ref setValue() should set only the first "numberOfDigits" characters', () => {
+      const ref = React.createRef<OtpInputRef>();
+
+      render(<OtpInput ref={ref} numberOfDigits={4} />);
+      const otp = "123456";
+
+      act(() => {
+        ref.current?.setValue(otp);
+      });
+      expect(screen.getByText("1")).toBeTruthy();
+      expect(screen.getByText("2")).toBeTruthy();
+      expect(screen.getByText("3")).toBeTruthy();
+      expect(screen.getByText("4")).toBeTruthy();
+      expect(screen.queryByText("5")).toBeFalsy();
+      expect(screen.queryByText("6")).toBeFalsy();
+    });
   });
 });

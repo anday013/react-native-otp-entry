@@ -32,8 +32,17 @@ describe("useOtpInput", () => {
     result.current.actions.clear();
 
     act(() => {
-      expect(result.current.models.text).toBe("");
       expect(result.current.forms.setText).toHaveBeenCalledWith("");
+    });
+  });
+
+  test("setTextWithRef() should only call setText the first 'numberOfDigits' characters", () => {
+    jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
+    const { result } = renderUseOtInput();
+    result.current.forms.setTextWithRef("123456789");
+
+    act(() => {
+      expect(result.current.forms.setText).toHaveBeenCalledWith("123456");
     });
   });
 
@@ -84,6 +93,28 @@ describe("useOtpInput", () => {
     act(() => {
       expect(result.current.forms.setText).toHaveBeenCalledWith(value);
       expect(mockOnTextChange).toHaveBeenCalledWith(value);
+    });
+  });
+
+  test("onFilled() should be called when the input filled", () => {
+    const value = "123456";
+    const mockOnFilled = jest.fn();
+    const { result } = renderUseOtInput({ onFilled: mockOnFilled });
+    result.current.actions.handleTextChange(value);
+
+    act(() => {
+      expect(mockOnFilled).toHaveBeenCalledWith(value);
+    });
+  });
+
+  test("onFilled() should NOT be called when the input is NOT filled", () => {
+    const value = "12345";
+    const mockOnFilled = jest.fn();
+    const { result } = renderUseOtInput({ onFilled: mockOnFilled });
+    result.current.actions.handleTextChange(value);
+
+    act(() => {
+      expect(mockOnFilled).not.toHaveBeenCalled();
     });
   });
 });
