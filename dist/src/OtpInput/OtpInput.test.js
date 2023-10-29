@@ -23,6 +23,13 @@ describe("OtpInput", () => {
             const inputs = react_native_1.screen.getAllByTestId("otp-input");
             expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
         });
+        test("activePinCodeContainerStyle should not be overridden by theme", () => {
+            renderOtpInput({
+                theme: { activePinCodeContainerStyle: { borderColor: "#fff" }, },
+            });
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
+        });
         // Test if the number of rendered inputs is equal to the number of digits
         test.each([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])("should render the correct number of inputs: %i", (numberOfDigits) => {
             renderOtpInput({ numberOfDigits: numberOfDigits });
