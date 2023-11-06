@@ -33,10 +33,10 @@ describe("OtpInput", () => {
       expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
     });
 
-    test("activePinCodeContainerStyle should not be overridden by theme", () => {
+    test("focusedPinCodeContainerStyle should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",
-        theme: { activePinCodeContainerStyle: { borderColor: "#fff", backgroundColor: "green" } },
+        theme: { focusedPinCodeContainerStyle: { borderColor: "#fff", backgroundColor: "green" } },
       });
       const inputs = screen.getAllByTestId("otp-input");
       expect(inputs[0]).toHaveStyle({ borderColor: "#fff", backgroundColor: "green" });

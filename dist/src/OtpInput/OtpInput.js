@@ -9,7 +9,7 @@ const useOtpInput_1 = require("./useOtpInput");
 exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
     const { models: { text, inputRef, focusedInputIndex }, actions: { clear, handlePress, handleTextChange }, forms: { setTextWithRef }, } = (0, useOtpInput_1.useOtpInput)(props);
     const { numberOfDigits, hideStick, focusColor = "#A4D0A4", focusStickBlinkingDuration, theme = {}, } = props;
-    const { containerStyle, inputsContainerStyle, pinCodeContainerStyle, pinCodeTextStyle, focusStickStyle, activePinCodeContainerStyle, } = theme;
+    const { containerStyle, inputsContainerStyle, pinCodeContainerStyle, pinCodeTextStyle, focusStickStyle, focusedPinCodeContainerStyle, } = theme;
     (0, react_1.useImperativeHandle)(ref, () => ({ clear, setValue: setTextWithRef }));
     return (<react_native_1.View style={[OtpInput_styles_1.styles.container, containerStyle]}>
       <react_native_1.View style={[OtpInput_styles_1.styles.inputsContainer, inputsContainerStyle]}>
@@ -22,8 +22,8 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
                     OtpInput_styles_1.styles.codeContainer,
                     pinCodeContainerStyle,
                     focusColor && isFocusedInput ? { borderColor: focusColor } : {},
-                    activePinCodeContainerStyle && isFocusedInput
-                        ? { ...activePinCodeContainerStyle }
+                    focusedPinCodeContainerStyle && isFocusedInput
+                        ? { ...focusedPinCodeContainerStyle }
                         : {},
                 ]} testID="otp-input">
                 {isFocusedInput && !hideStick ? (<VerticalStick_1.VerticalStick focusColor={focusColor} style={focusStickStyle} focusStickBlinkingDuration={focusStickBlinkingDuration}/>) : (<react_native_1.Text style={[OtpInput_styles_1.styles.codeText, pinCodeTextStyle]}>{char}</react_native_1.Text>)}
