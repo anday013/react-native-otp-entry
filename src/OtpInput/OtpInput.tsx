@@ -16,6 +16,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     hideStick,
     focusColor = "#A4D0A4",
     focusStickBlinkingDuration,
+    secureTextEntry = false,
     theme = {},
   } = props;
   const {
@@ -55,7 +56,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                     focusStickBlinkingDuration={focusStickBlinkingDuration}
                   />
                 ) : (
-                  <Text style={[styles.codeText, pinCodeTextStyle]}>{char}</Text>
+                  <Text style={[styles.codeText, pinCodeTextStyle]}>{char && secureTextEntry ? "•" : char}</Text>
                 )}
               </Pressable>
             );

@@ -7,6 +7,7 @@ export interface OtpInputProps {
   onFilled?: (text: string) => void;
   hideStick?: boolean;
   focusStickBlinkingDuration?: number;
+  secureTextEntry?: boolean;
   theme?: Theme;
 }
 
