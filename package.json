@@ -1,6 +1,6 @@
 {
   "name": "react-native-otp-entry",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A fully modifiable OTP input Component for React Native",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
