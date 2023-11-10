@@ -400,6 +400,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     inputMode="numeric"
     maxLength={6}
     onChangeText={[Function]}
+    secureTextEntry={false}
     style={
       {
         "height": 1,
