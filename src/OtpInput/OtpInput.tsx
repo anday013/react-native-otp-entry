@@ -9,7 +9,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex },
     actions: { clear, handlePress, handleTextChange },
-    forms: {setTextWithRef}
+    forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
     numberOfDigits,
@@ -56,7 +56,9 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                     focusStickBlinkingDuration={focusStickBlinkingDuration}
                   />
                 ) : (
-                  <Text style={[styles.codeText, pinCodeTextStyle]}>{char && secureTextEntry ? "•" : char}</Text>
+                  <Text style={[styles.codeText, pinCodeTextStyle]}>
+                    {char && secureTextEntry ? "•" : char}
+                  </Text>
                 )}
               </Pressable>
             );
@@ -70,6 +72,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         ref={inputRef}
         autoFocus
         style={styles.hiddenInput}
+        secureTextEntry={secureTextEntry}
         testID="otp-input-hidden"
       />
     </View>

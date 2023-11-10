@@ -15,6 +15,15 @@ describe("OtpInput", () => {
             const stick = react_native_1.screen.getByTestId("otp-input-stick");
             expect(stick).toBeTruthy();
         });
+        test('should not show values if "secureTextEntry" is true', () => {
+            renderOtpInput({ secureTextEntry: true });
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            react_native_1.fireEvent.changeText(input, "123456");
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            inputs.forEach((input) => {
+                expect(input).toHaveTextContent("•");
+            });
+        });
         test("focusColor should not be overridden by theme", () => {
             renderOtpInput({
                 focusColor: "#000",

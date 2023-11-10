@@ -22,6 +22,18 @@ describe("OtpInput", () => {
       expect(stick).toBeTruthy();
     });
 
+    test('should not show values if "secureTextEntry" is true', () => {
+      renderOtpInput({ secureTextEntry: true });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123456");
+      const inputs = screen.getAllByTestId("otp-input");
+
+      inputs.forEach((input) => {
+        expect(input).toHaveTextContent("•");
+      });
+    });
+
     test("focusColor should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",
