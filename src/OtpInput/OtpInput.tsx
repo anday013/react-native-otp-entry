@@ -25,6 +25,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     pinCodeContainerStyle,
     pinCodeTextStyle,
     focusStickStyle,
+    focusedPinCodeContainerStyle,
   } = theme;
 
   useImperativeHandle(ref, () => ({ clear, setValue: setTextWithRef }));
@@ -46,6 +47,9 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                   styles.codeContainer,
                   pinCodeContainerStyle,
                   focusColor && isFocusedInput ? { borderColor: focusColor } : {},
+                  focusedPinCodeContainerStyle && isFocusedInput
+                    ? { ...focusedPinCodeContainerStyle }
+                    : {},
                 ]}
                 testID="otp-input"
               >

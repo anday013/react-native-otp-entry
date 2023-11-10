@@ -22,4 +22,5 @@ export interface Theme {
   pinCodeContainerStyle?: ViewStyle;
   pinCodeTextStyle?: TextStyle;
   focusStickStyle?: ViewStyle;
+  focusedPinCodeContainerStyle?: ViewStyle;
 }

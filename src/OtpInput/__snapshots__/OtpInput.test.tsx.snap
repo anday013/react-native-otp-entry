@@ -68,6 +68,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           {
             "borderColor": "#A4D0A4",
           },
+          {},
         ]
       }
       testID="otp-input"
@@ -141,63 +142,6 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
-        ]
-      }
-      testID="otp-input"
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 28,
-            },
-            undefined,
-          ]
-        }
-      />
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "borderColor": "#DFDFDE",
-            "borderRadius": 12,
-            "borderWidth": 1,
-            "justifyContent": "center",
-            "minHeight": 60,
-            "minWidth": 44,
-          },
-          undefined,
           {},
         ]
       }
@@ -257,63 +201,6 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
-        ]
-      }
-      testID="otp-input"
-    >
-      <Text
-        style={
-          [
-            {
-              "fontSize": 28,
-            },
-            undefined,
-          ]
-        }
-      />
-    </View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "borderColor": "#DFDFDE",
-            "borderRadius": 12,
-            "borderWidth": 1,
-            "justifyContent": "center",
-            "minHeight": 60,
-            "minWidth": 44,
-          },
-          undefined,
           {},
         ]
       }
@@ -372,6 +259,125 @@ exports[`OtpInput UI should render correctly 1`] = `
             "minWidth": 44,
           },
           undefined,
+          {},
+          {},
+        ]
+      }
+      testID="otp-input"
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 28,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderColor": "#DFDFDE",
+            "borderRadius": 12,
+            "borderWidth": 1,
+            "justifyContent": "center",
+            "minHeight": 60,
+            "minWidth": 44,
+          },
+          undefined,
+          {},
+          {},
+        ]
+      }
+      testID="otp-input"
+    >
+      <Text
+        style={
+          [
+            {
+              "fontSize": 28,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderColor": "#DFDFDE",
+            "borderRadius": 12,
+            "borderWidth": 1,
+            "justifyContent": "center",
+            "minHeight": 60,
+            "minWidth": 44,
+          },
+          undefined,
+          {},
           {},
         ]
       }
