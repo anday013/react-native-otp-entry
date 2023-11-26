@@ -54,12 +54,12 @@ yarn add react-native-otp-entry
      onTextChange={(text) => console.log(text)}
      onFilled={(text) => console.log(`OTP is ${text}`)}
      theme={{
-       containerStyle={styles.container},
-       inputsContainerStyle={styles.inputsContainer},
-       pinCodeContainerStyle={styles.pinCodeContainer},
-       pinCodeTextStyle={styles.pinCodeText},
-       focusStickStyle={styles.focusStick},
-       focusedPinCodeContainerStyle={styles.activePinCodeContainer}
+      containerStyle:styles.container,
+      inputsContainerStyle:styles.inputsContainer,
+      pinCodeContainerStyle:styles.pinCodeContainer,
+      pinCodeTextStyle:styles.pinCodeText,
+      focusStickStyle:styles.focusStick,
+      focusedPinCodeContainerStyle:styles.activePinCodeContainer
      }}
    />
    ```
