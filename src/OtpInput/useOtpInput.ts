@@ -32,9 +32,13 @@ export const useOtpInput = ({ onTextChange, onFilled, numberOfDigits }: OtpInput
     setText("");
   };
 
+  const focus = () => {
+    inputRef.current?.focus();
+  };
+
   return {
     models: { text, inputRef, focusedInputIndex },
-    actions: { handlePress, handleTextChange, clear },
+    actions: { handlePress, handleTextChange, clear, focus },
     forms: { setText, setTextWithRef },
   };
 };

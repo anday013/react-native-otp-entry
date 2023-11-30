@@ -3,6 +3,11 @@ declare module "OTPInput" {
 
   export interface OtpEntryProps {
     /**
+     * Autofocus.
+     */
+    autoFocus: boolean;
+
+    /**
      * The number of digits to be displayed in the OTP entry.
      */
     numberOfDigits: number;
@@ -34,6 +39,11 @@ declare module "OTPInput" {
      * Clears the value of the OTP input.
      */
     clear: () => void;
+
+    /**
+     * Focus of the OTP input.
+     */
+    focus: () => void;
 
     /**
      * Sets the value of the OTP input.

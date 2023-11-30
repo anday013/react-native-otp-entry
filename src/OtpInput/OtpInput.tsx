@@ -8,11 +8,12 @@ import { useOtpInput } from "./useOtpInput";
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex },
-    actions: { clear, handlePress, handleTextChange },
+    actions: { clear, handlePress, handleTextChange, focus },
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
     numberOfDigits,
+    autoFocus,
     hideStick,
     focusColor = "#A4D0A4",
     focusStickBlinkingDuration,
@@ -28,7 +29,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusedPinCodeContainerStyle,
   } = theme;
 
-  useImperativeHandle(ref, () => ({ clear, setValue: setTextWithRef }));
+  useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
 
   return (
     <View style={[styles.container, containerStyle]}>
@@ -74,7 +75,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         maxLength={numberOfDigits}
         inputMode="numeric"
         ref={inputRef}
-        autoFocus
+        autoFocus={autoFocus}
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
         testID="otp-input-hidden"
