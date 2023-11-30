@@ -71,6 +71,7 @@ The `react-native-otp-entry` component accepts the following props:
 | Prop                         | Type                   | Description                                                                                                    |
 | ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                         |
+| `autoFocus`                  | boolean                | Set autofocus.                                                                                                 |
 | `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                              |
 | `onTextChange`               | (text: string) => void | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
 | `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
@@ -96,6 +97,7 @@ The `react-native-otp-entry` component exposes these functions with `ref`:
 | Prop       | Type                     | Description                        |
 | ---------- | ------------------------ | ---------------------------------- |
 | `clear`    | () => void;              | Clears the value of the OTP input. |
+| `focus`    | () => void;              | Focus of the OTP input. |
 | `setValue` | (value: string) => void; | Sets the value of the OTP input.   |
 
 ## License
