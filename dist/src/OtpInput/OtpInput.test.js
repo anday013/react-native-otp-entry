@@ -24,6 +24,16 @@ describe("OtpInput", () => {
                 expect(input).toHaveTextContent("•");
             });
         });
+        test("should autoFocused by default", () => {
+            renderOtpInput();
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            expect(input.props.autoFocus).toBe(true);
+        });
+        test('should not focus if "autoFocus" is false', () => {
+            renderOtpInput({ autoFocus: false });
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            expect(input.props.autoFocus).toBe(false);
+        });
         test("focusColor should not be overridden by theme", () => {
             renderOtpInput({
                 focusColor: "#000",

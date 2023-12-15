@@ -11,6 +11,7 @@ export declare const useOtpInput: ({ onTextChange, onFilled, numberOfDigits }: O
         handlePress: () => void;
         handleTextChange: (value: string) => void;
         clear: () => void;
+        focus: () => void;
     };
     forms: {
         setText: import("react").Dispatch<import("react").SetStateAction<string>>;

@@ -13,7 +13,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   } = useOtpInput(props);
   const {
     numberOfDigits,
-    autoFocus,
+    autoFocus = true,
     hideStick,
     focusColor = "#A4D0A4",
     focusStickBlinkingDuration,

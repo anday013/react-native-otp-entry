@@ -36,6 +36,17 @@ describe("useOtpInput", () => {
     });
   });
 
+  test("focus() should focus on input", () => {
+    jest.spyOn(React, "useRef").mockReturnValue({ current: { focus: jest.fn() } } as any);
+
+    const { result } = renderUseOtInput();
+    result.current.actions.focus();
+
+    act(() => {
+      expect(result.current.models.inputRef.current?.focus).toHaveBeenCalled();
+    });
+  });
+
   test("setTextWithRef() should only call setText the first 'numberOfDigits' characters", () => {
     jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
     const { result } = renderUseOtInput();

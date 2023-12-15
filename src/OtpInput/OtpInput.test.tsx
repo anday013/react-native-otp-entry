@@ -34,6 +34,22 @@ describe("OtpInput", () => {
       });
     });
 
+    test("should autoFocused by default", () => {
+      renderOtpInput();
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input.props.autoFocus).toBe(true);
+    });
+
+    test('should not focus if "autoFocus" is false', () => {
+      renderOtpInput({ autoFocus: false });
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input.props.autoFocus).toBe(false);
+    });
+
     test("focusColor should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",
