@@ -23,6 +23,14 @@ describe("useOtpInput", () => {
             expect(result.current.forms.setText).toHaveBeenCalledWith("");
         });
     });
+    test("focus() should focus on input", () => {
+        jest.spyOn(React, "useRef").mockReturnValue({ current: { focus: jest.fn() } });
+        const { result } = renderUseOtInput();
+        result.current.actions.focus();
+        (0, react_native_1.act)(() => {
+            expect(result.current.models.inputRef.current?.focus).toHaveBeenCalled();
+        });
+    });
     test("setTextWithRef() should only call setText the first 'numberOfDigits' characters", () => {
         jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
         const { result } = renderUseOtInput();
