@@ -11,8 +11,8 @@ export declare const styles: {
         borderWidth: number;
         borderRadius: number;
         borderColor: string;
-        minHeight: number;
-        minWidth: number;
+        height: number;
+        width: number;
         justifyContent: "center";
         alignItems: "center";
     };
