@@ -409,6 +409,7 @@ exports[`OtpInput UI should render correctly 1`] = `
       }
     }
     testID="otp-input-hidden"
+    textContentType="oneTimeCode"
     value=""
   />
 </View>
