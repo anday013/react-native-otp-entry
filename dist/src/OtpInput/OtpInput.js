@@ -32,6 +32,6 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
               </react_native_1.Pressable>);
         })}
       </react_native_1.View>
-      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" ref={inputRef} autoFocus={autoFocus} style={OtpInput_styles_1.styles.hiddenInput} secureTextEntry={secureTextEntry} testID="otp-input-hidden"/>
+      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" textContentType="oneTimeCode" ref={inputRef} autoFocus={autoFocus} style={OtpInput_styles_1.styles.hiddenInput} secureTextEntry={secureTextEntry} testID="otp-input-hidden"/>
     </react_native_1.View>);
 });

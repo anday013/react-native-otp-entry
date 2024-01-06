@@ -74,6 +74,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
         inputMode="numeric"
+        textContentType="oneTimeCode"
         ref={inputRef}
         autoFocus={autoFocus}
         style={styles.hiddenInput}
