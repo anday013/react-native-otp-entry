@@ -81,6 +81,20 @@ describe("OtpInput", () => {
         expect(inputs).toHaveLength(numberOfDigits);
       }
     );
+
+    test("filledPinCodeContainerStyle should allow for new style when digit is present", () => {
+      renderOtpInput({
+        theme: { filledPinCodeContainerStyle: { borderBottomColor: "red" } },
+      });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "12");
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
+      expect(inputs[1]).toHaveStyle({ borderBottomColor: "red" });
+      expect(inputs[2]).not.toHaveStyle({ borderBottomColor: "red" });
+    });
   });
 
   describe("Logic", () => {
