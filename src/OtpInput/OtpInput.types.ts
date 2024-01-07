@@ -22,6 +22,7 @@ export interface Theme {
   containerStyle?: ViewStyle;
   inputsContainerStyle?: ViewStyle;
   pinCodeContainerStyle?: ViewStyle;
+  filledPinCodeContainerStyle?: ViewStyle;
   pinCodeTextStyle?: TextStyle;
   focusStickStyle?: ViewStyle;
   focusedPinCodeContainerStyle?: ViewStyle;

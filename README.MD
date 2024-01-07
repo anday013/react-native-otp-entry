@@ -87,6 +87,7 @@ The `react-native-otp-entry` component accepts the following props:
 | `pinCodeTextStyle`             | TextStyle | Custom styles for the text within each individual digit in the OTP entry.          |
 | `focusStickStyle`              | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
 | `focusedPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is focused.                              |
+| `filledPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it has a value.                             |
 
 Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
 
