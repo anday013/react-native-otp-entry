@@ -77,7 +77,8 @@ The `react-native-otp-entry` component accepts the following props:
 | `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
 | `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                              |
 | `theme`                      | Theme                  | Custom styles for each element.                                                                                |
-| `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
+| `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.
+| `autoComplete`               | string                 | passed to underlying TextInput (see: https://reactnative.dev/docs/textinput#autocomplete) |
 
 | Theme                          | Type      | Description                                                                        |
 | ------------------------------ | --------- | ---------------------------------------------------------------------------------- |
