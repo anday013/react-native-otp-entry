@@ -83,6 +83,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         autoFocus={autoFocus}
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
+        autoComplete="one-time-code"
         testID="otp-input-hidden"
       />
     </View>
