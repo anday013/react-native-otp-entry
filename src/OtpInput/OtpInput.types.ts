@@ -1,4 +1,4 @@
-import { ColorValue, TextInputProps, TextStyle, ViewStyle } from "react-native";
+import { ColorValue, TextStyle, ViewStyle } from "react-native";
 
 export interface OtpInputProps {
   numberOfDigits: number;
@@ -10,7 +10,6 @@ export interface OtpInputProps {
   focusStickBlinkingDuration?: number;
   secureTextEntry?: boolean;
   theme?: Theme;
-  autoComplete?: TextInputProps["autoComplete"];
 }
 
 export interface OtpInputRef {

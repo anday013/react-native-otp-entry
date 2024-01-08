@@ -18,7 +18,6 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusColor = "#A4D0A4",
     focusStickBlinkingDuration,
     secureTextEntry = false,
-    autoComplete = "sms-otp",
     theme = {},
   } = props;
   const {
@@ -80,7 +79,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         autoFocus={autoFocus}
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
-        autoComplete={autoComplete}
+        autoComplete="one-time-code"
         testID="otp-input-hidden"
       />
     </View>
