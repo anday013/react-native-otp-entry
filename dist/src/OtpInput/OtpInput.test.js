@@ -56,6 +56,17 @@ describe("OtpInput", () => {
             const inputs = react_native_1.screen.getAllByTestId("otp-input");
             expect(inputs).toHaveLength(numberOfDigits);
         });
+        test("filledPinCodeContainerStyle should allow for new style when digit is present", () => {
+            renderOtpInput({
+                theme: { filledPinCodeContainerStyle: { borderBottomColor: "red" } },
+            });
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            react_native_1.fireEvent.changeText(input, "12");
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
+            expect(inputs[1]).toHaveStyle({ borderBottomColor: "red" });
+            expect(inputs[2]).not.toHaveStyle({ borderBottomColor: "red" });
+        });
     });
     describe("Logic", () => {
         test("should split text on screen from the text written in the hidden input", () => {
