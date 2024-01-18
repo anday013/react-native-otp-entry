@@ -46,6 +46,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
             return (
               <Pressable
                 key={`${char}-${index}`}
+                disabled={disabled}
                 onPress={handlePress}
                 style={[
                   styles.codeContainer,
@@ -89,6 +90,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
         autoComplete="one-time-code"
+        aria-disabled={disabled}
+        editable={!disabled}
         testID="otp-input-hidden"
       />
     </View>

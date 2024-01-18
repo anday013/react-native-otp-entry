@@ -58,6 +58,10 @@ describe("OtpInput", () => {
 
       const inputs = screen.getAllByTestId("otp-input");
       expect(inputs[0]).not.toHaveTextContent("1");
+      inputs.forEach((i) => expect(i).toBeDisabled());
+
+      const hiddenInput = screen.getByTestId("otp-input-hidden");
+      expect(hiddenInput).toBeDisabled();
     });
 
     test("focusColor should not be overridden by theme", () => {

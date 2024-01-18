@@ -410,6 +410,7 @@ exports[`OtpInput UI should render correctly 1`] = `
   <TextInput
     autoComplete="one-time-code"
     autoFocus={true}
+    editable={true}
     inputMode="numeric"
     maxLength={6}
     onChangeText={[Function]}
