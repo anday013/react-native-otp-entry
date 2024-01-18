@@ -105,6 +105,16 @@ describe("OtpInput", () => {
       expect(inputs[1]).toHaveStyle({ borderBottomColor: "red" });
       expect(inputs[2]).not.toHaveStyle({ borderBottomColor: "red" });
     });
+
+    test("disabledPinCodeContainerStyle should allow for new style when input is disabled", () => {
+      renderOtpInput({
+        disabled: true,
+        theme: { disabledPinCodeContainerStyle: { borderBottomColor: "red" } },
+      });
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
+    });
   });
 
   describe("Logic", () => {

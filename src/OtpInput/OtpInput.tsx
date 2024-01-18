@@ -13,6 +13,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   } = useOtpInput(props);
   const {
     numberOfDigits,
+    disabled,
     autoFocus = true,
     hideStick,
     focusColor = "#A4D0A4",
@@ -28,6 +29,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusStickStyle,
     focusedPinCodeContainerStyle,
     filledPinCodeContainerStyle,
+    disabledPinCodeContainerStyle,
   } = theme;
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
@@ -54,6 +56,9 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                     : {},
                   filledPinCodeContainerStyle && Boolean(char)
                     ? { ...filledPinCodeContainerStyle }
+                    : {},
+                  disabled && disabledPinCodeContainerStyle
+                    ? { ...disabledPinCodeContainerStyle }
                     : {},
                 ]}
                 testID="otp-input"
