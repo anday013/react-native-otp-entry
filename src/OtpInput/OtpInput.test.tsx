@@ -50,6 +50,16 @@ describe("OtpInput", () => {
       expect(input.props.autoFocus).toBe(false);
     });
 
+    test("it should not allow input if disabled is true", () => {
+      renderOtpInput({ disabled: true });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123456");
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[0]).not.toHaveTextContent("1");
+    });
+
     test("focusColor should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",

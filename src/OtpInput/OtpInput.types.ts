@@ -10,6 +10,7 @@ export interface OtpInputProps {
   focusStickBlinkingDuration?: number;
   secureTextEntry?: boolean;
   theme?: Theme;
+  disabled?: boolean;
 }
 
 export interface OtpInputRef {

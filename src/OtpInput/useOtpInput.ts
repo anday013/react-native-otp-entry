@@ -2,7 +2,12 @@ import { useRef, useState } from "react";
 import { Keyboard, TextInput } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
 
-export const useOtpInput = ({ onTextChange, onFilled, numberOfDigits }: OtpInputProps) => {
+export const useOtpInput = ({
+  onTextChange,
+  onFilled,
+  numberOfDigits,
+  disabled,
+}: OtpInputProps) => {
   const [text, setText] = useState("");
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
@@ -16,6 +21,7 @@ export const useOtpInput = ({ onTextChange, onFilled, numberOfDigits }: OtpInput
   };
 
   const handleTextChange = (value: string) => {
+    if (disabled) return;
     setText(value);
     onTextChange?.(value);
     if (value.length === numberOfDigits) {
