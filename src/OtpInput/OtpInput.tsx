@@ -19,6 +19,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusStickBlinkingDuration,
     secureTextEntry = false,
     theme = {},
+    ...rest
   } = props;
   const {
     containerStyle,
@@ -85,6 +86,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         secureTextEntry={secureTextEntry}
         autoComplete="one-time-code"
         testID="otp-input-hidden"
+        {...rest}
       />
     </View>
   );
