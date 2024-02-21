@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
@@ -31,6 +31,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     filledPinCodeContainerStyle,
   } = theme;
 
+  const [hasCursor, setHasCursor] = useState(false);
+
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
 
   return (
@@ -59,7 +61,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                 ]}
                 testID="otp-input"
               >
-                {isFocusedInput && !hideStick ? (
+                {isFocusedInput && (hasCursor || !hideStick) ? (
                   <VerticalStick
                     focusColor={focusColor}
                     style={focusStickStyle}
@@ -86,6 +88,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         secureTextEntry={secureTextEntry}
         autoComplete="one-time-code"
         testID="otp-input-hidden"
+        onFocus={() => setHasCursor(true)}
+        onBlur={() => setHasCursor(false)}
         {...rest}
       />
     </View>
