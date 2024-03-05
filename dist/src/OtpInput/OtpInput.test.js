@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("@testing-library/react-native");
 const React = require("react");
 const OtpInput_1 = require("./OtpInput");
-const renderOtpInput = (props) => (0, react_native_1.render)(<OtpInput_1.OtpInput numberOfDigits={6} {...props}/>);
+const renderOtpInput = (props) => (0, react_native_1.render)(<OtpInput_1.OtpInput {...props}/>);
 describe("OtpInput", () => {
     describe("UI", () => {
         test("should render correctly", () => {
@@ -23,6 +23,11 @@ describe("OtpInput", () => {
             inputs.forEach((input) => {
                 expect(input).toHaveTextContent("•");
             });
+        });
+        test("should have 6 inputs by default", () => {
+            renderOtpInput();
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs).toHaveLength(6);
         });
         test("should autoFocused by default", () => {
             renderOtpInput();
