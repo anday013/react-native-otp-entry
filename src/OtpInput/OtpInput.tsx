@@ -12,7 +12,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
-    numberOfDigits,
+    numberOfDigits = 6,
     autoFocus = true,
     hideStick,
     focusColor = "#A4D0A4",
