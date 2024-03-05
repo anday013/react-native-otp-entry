@@ -17,7 +17,7 @@
 - Fully covered with unit tests.
 - Seamless integration with React Native and Expo applications.
 - Fully typed with TypeScript.
-- Copy and paste functionality.
+- Paste functionality.
 
 ## Installation
 
