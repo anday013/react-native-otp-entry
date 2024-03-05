@@ -12,7 +12,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
-    numberOfDigits,
+    numberOfDigits = 6,
     autoFocus = true,
     hideStick,
     focusColor = "#A4D0A4",
@@ -32,6 +32,23 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
 
+  const generatePinCodeContainerStyle = (isFocusedInput: boolean, char: string) => {
+    const stylesArray = [styles.codeContainer, pinCodeContainerStyle];
+    if (focusColor && isFocusedInput) {
+      stylesArray.push({ borderColor: focusColor });
+    }
+
+    if (focusedPinCodeContainerStyle && isFocusedInput) {
+      stylesArray.push(focusedPinCodeContainerStyle);
+    }
+
+    if (filledPinCodeContainerStyle && Boolean(char)) {
+      stylesArray.push(filledPinCodeContainerStyle);
+    }
+
+    return stylesArray;
+  };
+
   return (
     <View style={[styles.container, containerStyle]}>
       <View style={[styles.inputsContainer, inputsContainerStyle]}>
@@ -45,17 +62,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
               <Pressable
                 key={`${char}-${index}`}
                 onPress={handlePress}
-                style={[
-                  styles.codeContainer,
-                  pinCodeContainerStyle,
-                  focusColor && isFocusedInput ? { borderColor: focusColor } : {},
-                  focusedPinCodeContainerStyle && isFocusedInput
-                    ? { ...focusedPinCodeContainerStyle }
-                    : {},
-                  filledPinCodeContainerStyle && Boolean(char)
-                    ? { ...filledPinCodeContainerStyle }
-                    : {},
-                ]}
+                style={generatePinCodeContainerStyle(isFocusedInput, char)}
                 testID="otp-input"
               >
                 {isFocusedInput && !hideStick ? (
