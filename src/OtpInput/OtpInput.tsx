@@ -1,5 +1,5 @@
 import { forwardRef, useImperativeHandle } from "react";
-import { Pressable, Text, TextInput, View } from "react-native";
+import { Platform, Pressable, Text, TextInput, View } from "react-native";
 import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
@@ -90,8 +90,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         autoFocus={autoFocus}
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
-        // @ts-ignore
-        autoComplete={Platform.OS === 'ios' ? "one-time-code" : "sms-otp"}
+        autoComplete={Platform.OS === 'android' ? "sms-otp" : "one-time-code"}
         testID="otp-input-hidden"
       />
     </View>
