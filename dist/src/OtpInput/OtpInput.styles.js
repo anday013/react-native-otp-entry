@@ -24,9 +24,8 @@ exports.styles = react_native_1.StyleSheet.create({
         fontSize: 28,
     },
     hiddenInput: {
-        width: 1,
-        height: 1,
-        opacity: 0,
+        ...react_native_1.StyleSheet.absoluteFillObject,
+        opacity: 0.01,
     },
     stick: {
         width: 2,

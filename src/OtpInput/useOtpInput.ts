@@ -5,7 +5,7 @@ import { OtpInputProps } from "./OtpInput.types";
 export const useOtpInput = ({
   onTextChange,
   onFilled,
-  numberOfDigits,
+  numberOfDigits = 6,
   disabled,
 }: OtpInputProps) => {
   const [text, setText] = useState("");

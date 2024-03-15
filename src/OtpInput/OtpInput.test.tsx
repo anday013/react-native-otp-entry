@@ -3,8 +3,7 @@ import * as React from "react";
 import { OtpInput } from "./OtpInput";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 
-const renderOtpInput = (props?: Partial<OtpInputProps>) =>
-  render(<OtpInput numberOfDigits={6} {...props} />);
+const renderOtpInput = (props?: Partial<OtpInputProps>) => render(<OtpInput {...props} />);
 
 describe("OtpInput", () => {
   describe("UI", () => {
@@ -32,6 +31,14 @@ describe("OtpInput", () => {
       inputs.forEach((input) => {
         expect(input).toHaveTextContent("•");
       });
+    });
+
+    test("should have 6 inputs by default", () => {
+      renderOtpInput();
+
+      const inputs = screen.getAllByTestId("otp-input");
+
+      expect(inputs).toHaveLength(6);
     });
 
     test("should autoFocused by default", () => {

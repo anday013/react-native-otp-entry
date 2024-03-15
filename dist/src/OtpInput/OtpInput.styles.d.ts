@@ -20,9 +20,12 @@ export declare const styles: {
         fontSize: number;
     };
     hiddenInput: {
-        width: number;
-        height: number;
         opacity: number;
+        position: "absolute";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
     };
     stick: {
         width: number;
