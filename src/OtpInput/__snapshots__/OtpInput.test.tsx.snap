@@ -68,9 +68,6 @@ exports[`OtpInput UI should render correctly 1`] = `
           {
             "borderColor": "#A4D0A4",
           },
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
@@ -143,10 +140,6 @@ exports[`OtpInput UI should render correctly 1`] = `
             "width": 44,
           },
           undefined,
-          {},
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
@@ -204,10 +197,6 @@ exports[`OtpInput UI should render correctly 1`] = `
             "width": 44,
           },
           undefined,
-          {},
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
@@ -265,10 +254,6 @@ exports[`OtpInput UI should render correctly 1`] = `
             "width": 44,
           },
           undefined,
-          {},
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
@@ -326,10 +311,6 @@ exports[`OtpInput UI should render correctly 1`] = `
             "width": 44,
           },
           undefined,
-          {},
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
@@ -387,10 +368,6 @@ exports[`OtpInput UI should render correctly 1`] = `
             "width": 44,
           },
           undefined,
-          {},
-          {},
-          {},
-          {},
         ]
       }
       testID="otp-input"
