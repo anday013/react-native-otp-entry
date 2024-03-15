@@ -39,6 +39,16 @@ describe("OtpInput", () => {
             const input = react_native_1.screen.getByTestId("otp-input-hidden");
             expect(input.props.autoFocus).toBe(false);
         });
+        test("it should not allow input if disabled is true", () => {
+            renderOtpInput({ disabled: true });
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            react_native_1.fireEvent.changeText(input, "123456");
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).not.toHaveTextContent("1");
+            inputs.forEach((i) => expect(i).toBeDisabled());
+            const hiddenInput = react_native_1.screen.getByTestId("otp-input-hidden");
+            expect(hiddenInput).toBeDisabled();
+        });
         test("focusColor should not be overridden by theme", () => {
             renderOtpInput({
                 focusColor: "#000",
@@ -71,6 +81,14 @@ describe("OtpInput", () => {
             expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
             expect(inputs[1]).toHaveStyle({ borderBottomColor: "red" });
             expect(inputs[2]).not.toHaveStyle({ borderBottomColor: "red" });
+        });
+        test("disabledPinCodeContainerStyle should allow for new style when input is disabled", () => {
+            renderOtpInput({
+                disabled: true,
+                theme: { disabledPinCodeContainerStyle: { borderBottomColor: "red" } },
+            });
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
         });
     });
     describe("Logic", () => {

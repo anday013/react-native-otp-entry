@@ -57,6 +57,20 @@ describe("OtpInput", () => {
       expect(input.props.autoFocus).toBe(false);
     });
 
+    test("it should not allow input if disabled is true", () => {
+      renderOtpInput({ disabled: true });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123456");
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[0]).not.toHaveTextContent("1");
+      inputs.forEach((i) => expect(i).toBeDisabled());
+
+      const hiddenInput = screen.getByTestId("otp-input-hidden");
+      expect(hiddenInput).toBeDisabled();
+    });
+
     test("focusColor should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",
@@ -101,6 +115,16 @@ describe("OtpInput", () => {
       expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
       expect(inputs[1]).toHaveStyle({ borderBottomColor: "red" });
       expect(inputs[2]).not.toHaveStyle({ borderBottomColor: "red" });
+    });
+
+    test("disabledPinCodeContainerStyle should allow for new style when input is disabled", () => {
+      renderOtpInput({
+        disabled: true,
+        theme: { disabledPinCodeContainerStyle: { borderBottomColor: "red" } },
+      });
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
     });
   });
 

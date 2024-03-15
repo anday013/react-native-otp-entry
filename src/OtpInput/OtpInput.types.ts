@@ -10,6 +10,7 @@ export interface OtpInputProps {
   focusStickBlinkingDuration?: number;
   secureTextEntry?: boolean;
   theme?: Theme;
+  disabled?: boolean;
 }
 
 export interface OtpInputRef {
@@ -26,4 +27,5 @@ export interface Theme {
   pinCodeTextStyle?: TextStyle;
   focusStickStyle?: ViewStyle;
   focusedPinCodeContainerStyle?: ViewStyle;
+  disabledPinCodeContainerStyle?: ViewStyle;
 }

@@ -76,6 +76,17 @@ describe("useOtpInput", () => {
             expect(mockOnTextChange).toHaveBeenCalledWith(value);
         });
     });
+    test("handleTextChange() should not proceed if the input is disabled", () => {
+        const value = "123456";
+        const mockOnTextChange = jest.fn();
+        jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
+        const { result } = renderUseOtInput({ onTextChange: mockOnTextChange, disabled: true });
+        result.current.actions.handleTextChange(value);
+        (0, react_native_1.act)(() => {
+            expect(result.current.forms.setText).not.toHaveBeenCalled();
+            expect(mockOnTextChange).not.toHaveBeenCalled();
+        });
+    });
     test("onFilled() should be called when the input filled", () => {
         const value = "123456";
         const mockOnFilled = jest.fn();

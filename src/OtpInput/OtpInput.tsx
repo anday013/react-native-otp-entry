@@ -12,6 +12,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
+    disabled,
     numberOfDigits = 6,
     autoFocus = true,
     hideStick,
@@ -28,6 +29,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusStickStyle,
     focusedPinCodeContainerStyle,
     filledPinCodeContainerStyle,
+    disabledPinCodeContainerStyle,
   } = theme;
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
@@ -46,6 +48,10 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
       stylesArray.push(filledPinCodeContainerStyle);
     }
 
+    if (disabledPinCodeContainerStyle && disabled) {
+      stylesArray.push(disabledPinCodeContainerStyle);
+    }
+
     return stylesArray;
   };
 
@@ -61,6 +67,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
             return (
               <Pressable
                 key={`${char}-${index}`}
+                disabled={disabled}
                 onPress={handlePress}
                 style={generatePinCodeContainerStyle(isFocusedInput, char)}
                 testID="otp-input"
@@ -91,6 +98,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         style={styles.hiddenInput}
         secureTextEntry={secureTextEntry}
         autoComplete="one-time-code"
+        aria-disabled={disabled}
+        editable={!disabled}
         testID="otp-input-hidden"
       />
     </View>
