@@ -91,6 +91,7 @@ The `react-native-otp-entry` component accepts the following props:
 | `focusStickStyle`              | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
 | `focusedPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is focused.                              |
 | `filledPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it has a value.                             |
+| `disabledPinCodeContainerStyle`| ViewStyle | Custom styles for the input field when it is disabled.                             |
 
 Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
 
