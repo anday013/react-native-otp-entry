@@ -72,14 +72,14 @@ The `react-native-otp-entry` component accepts the following props:
 | Prop                         | Type                   | Description                                                                                                    |
 | ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                         |
-| `autoFocus`                  | boolean                | Set autofocus.                                                                                                 |
+| `autoFocus`                  | boolean                | Default: true. Set autofocus.                                                                                  |
 | `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                              |
 | `onTextChange`               | (text: string) => void | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
 | `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
 | `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                              |
 | `theme`                      | Theme                  | Custom styles for each element.                                                                                |
 | `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
-| `autoComplete`               | string                 | Default: true. Passed to underlying TextInput (see: https://reactnative.dev/docs/textinput#autocomplete)       |
+| `disabled`                   | boolean                | Default: false. Disable the input                                                                              |
 | `textInputProps`             | TextInputProps         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
 
 | Theme                          | Type      | Description                                                                        |
