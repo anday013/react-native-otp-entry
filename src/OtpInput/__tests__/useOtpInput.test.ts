@@ -142,4 +142,25 @@ describe("useOtpInput", () => {
       expect(mockOnFilled).not.toHaveBeenCalled();
     });
   });
+
+  test("handleFocus() should set hasCurrentFocus to true", () => {
+    const mockSetState = jest.fn();
+    jest.spyOn(React, "useState").mockImplementation(() => [false, mockSetState]);
+    const { result } = renderUseOtInput();
+    result.current.actions.handleFocus();
+
+    act(() => {
+      expect(mockSetState).toHaveBeenCalledWith(true);
+    });
+  });
+  test("handleBlur() should set hasCurrentFocus to false", () => {
+    const mockSetState = jest.fn();
+    jest.spyOn(React, "useState").mockImplementation(() => [true, mockSetState]);
+    const { result } = renderUseOtInput();
+    result.current.actions.handleBlur();
+
+    act(() => {
+      expect(mockSetState).toHaveBeenCalledWith(false);
+    });
+  });
 });

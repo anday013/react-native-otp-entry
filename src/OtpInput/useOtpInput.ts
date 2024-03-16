@@ -7,7 +7,7 @@ export const useOtpInput = ({
   onFilled,
   numberOfDigits = 6,
   disabled,
-  autoFocus,
+  autoFocus = true,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
   const [hasCursor, setHasCursor] = useState(autoFocus);

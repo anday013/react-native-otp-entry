@@ -63,8 +63,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
           .fill(0)
           .map((_, index) => {
             const char = text[index];
-            const isFocusedInput =
-              index === focusedInputIndex && !disabled && !hideStick && Boolean(hasCursor);
+            const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(hasCursor);
 
             return (
               <Pressable
@@ -74,7 +73,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                 style={generatePinCodeContainerStyle(isFocusedInput, char)}
                 testID="otp-input"
               >
-                {isFocusedInput ? (
+                {isFocusedInput && !hideStick ? (
                   <VerticalStick
                     focusColor={focusColor}
                     style={focusStickStyle}

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("@testing-library/react-native");
 const React = require("react");
+const react_native_2 = require("react-native");
 const OtpInput_1 = require("../OtpInput");
 const renderOtpInput = (props) => (0, react_native_1.render)(<OtpInput_1.OtpInput {...props}/>);
 describe("OtpInput", () => {
@@ -14,6 +15,11 @@ describe("OtpInput", () => {
             renderOtpInput({ hideStick: false });
             const stick = react_native_1.screen.getByTestId("otp-input-stick");
             expect(stick).toBeTruthy();
+        });
+        test('should not render stick if "hideStick" is true', () => {
+            renderOtpInput({ hideStick: true });
+            const stick = react_native_1.screen.queryByTestId("otp-input-stick");
+            expect(stick).toBeFalsy();
         });
         test('should not show values if "secureTextEntry" is true', () => {
             renderOtpInput({ secureTextEntry: true });
@@ -38,6 +44,14 @@ describe("OtpInput", () => {
             renderOtpInput({ autoFocus: false });
             const input = react_native_1.screen.getByTestId("otp-input-hidden");
             expect(input.props.autoFocus).toBe(false);
+        });
+        test("should not focus if disabled is true", () => {
+            renderOtpInput({
+                disabled: true,
+                focusColor: "#444",
+            });
+            const inputs = react_native_1.screen.getAllByTestId("otp-input");
+            expect(inputs[0]).not.toHaveStyle({ borderColor: "#444" });
         });
         test("it should not allow input if disabled is true", () => {
             renderOtpInput({ disabled: true });
@@ -89,6 +103,18 @@ describe("OtpInput", () => {
             });
             const inputs = react_native_1.screen.getAllByTestId("otp-input");
             expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
+        });
+        test('autoComplete should be set "sms-otp" on Android', () => {
+            react_native_2.Platform.OS = "android";
+            renderOtpInput();
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            expect(input.props.autoComplete).toBe("sms-otp");
+        });
+        test('autoComplete should be set "one-time-code" on iOS', () => {
+            react_native_2.Platform.OS = "ios";
+            renderOtpInput();
+            const input = react_native_1.screen.getByTestId("otp-input-hidden");
+            expect(input.props.autoComplete).toBe("one-time-code");
         });
     });
     describe("Logic", () => {

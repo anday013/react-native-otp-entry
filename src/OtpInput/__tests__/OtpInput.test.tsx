@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react-native";
 import * as React from "react";
+import { Platform } from "react-native";
 import { OtpInput } from "../OtpInput";
 import { OtpInputProps, OtpInputRef } from "../OtpInput.types";
 
@@ -19,6 +20,14 @@ describe("OtpInput", () => {
       const stick = screen.getByTestId("otp-input-stick");
 
       expect(stick).toBeTruthy();
+    });
+
+    test('should not render stick if "hideStick" is true', () => {
+      renderOtpInput({ hideStick: true });
+
+      const stick = screen.queryByTestId("otp-input-stick");
+
+      expect(stick).toBeFalsy();
     });
 
     test('should not show values if "secureTextEntry" is true', () => {
@@ -55,6 +64,17 @@ describe("OtpInput", () => {
       const input = screen.getByTestId("otp-input-hidden");
 
       expect(input.props.autoFocus).toBe(false);
+    });
+
+    test("should not focus if disabled is true", () => {
+      renderOtpInput({
+        disabled: true,
+        focusColor: "#444",
+      });
+
+      const inputs = screen.getAllByTestId("otp-input");
+
+      expect(inputs[0]).not.toHaveStyle({ borderColor: "#444" });
     });
 
     test("it should not allow input if disabled is true", () => {
@@ -126,8 +146,25 @@ describe("OtpInput", () => {
       const inputs = screen.getAllByTestId("otp-input");
       expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
     });
-  });
 
+    test('autoComplete should be set "sms-otp" on Android', () => {
+      Platform.OS = "android";
+      renderOtpInput();
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input.props.autoComplete).toBe("sms-otp");
+    });
+
+    test('autoComplete should be set "one-time-code" on iOS', () => {
+      Platform.OS = "ios";
+      renderOtpInput();
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input.props.autoComplete).toBe("one-time-code");
+    });
+  });
   describe("Logic", () => {
     test("should split text on screen from the text written in the hidden input", () => {
       const otp = "123456";
