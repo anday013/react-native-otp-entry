@@ -1,7 +1,7 @@
 import { act, fireEvent, render, screen } from "@testing-library/react-native";
 import * as React from "react";
-import { OtpInput } from "./OtpInput";
-import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
+import { OtpInput } from "../OtpInput";
+import { OtpInputProps, OtpInputRef } from "../OtpInput.types";
 
 const renderOtpInput = (props?: Partial<OtpInputProps>) => render(<OtpInput {...props} />);
 
