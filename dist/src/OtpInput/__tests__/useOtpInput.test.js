@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("@testing-library/react-native");
 const React = require("react");
 const react_native_2 = require("react-native");
-const useOtpInput_1 = require("./useOtpInput");
+const useOtpInput_1 = require("../useOtpInput");
 const renderUseOtInput = (props) => (0, react_native_1.renderHook)(() => (0, useOtpInput_1.useOtpInput)({ numberOfDigits: 6, ...props }));
 describe("useOtpInput", () => {
     afterEach(() => {

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react-native";
-import { VerticalStick } from "./VerticalStick";
+import { VerticalStick } from "../VerticalStick";
 
 describe("VerticalStick", () => {
   test("should set focusColor when passed", () => {

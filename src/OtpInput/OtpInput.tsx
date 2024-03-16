@@ -20,6 +20,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusStickBlinkingDuration,
     secureTextEntry = false,
     theme = {},
+    textInputProps,
   } = props;
   const {
     containerStyle,
@@ -92,6 +93,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
         inputMode="numeric"
+        keyboardType="numeric"
         textContentType="oneTimeCode"
         ref={inputRef}
         autoFocus={autoFocus}
@@ -101,6 +103,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         aria-disabled={disabled}
         editable={!disabled}
         testID="otp-input-hidden"
+        {...textInputProps}
       />
     </View>
   );

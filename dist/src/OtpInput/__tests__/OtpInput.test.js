@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_native_1 = require("@testing-library/react-native");
 const React = require("react");
-const OtpInput_1 = require("./OtpInput");
+const OtpInput_1 = require("../OtpInput");
 const renderOtpInput = (props) => (0, react_native_1.render)(<OtpInput_1.OtpInput {...props}/>);
 describe("OtpInput", () => {
     describe("UI", () => {
