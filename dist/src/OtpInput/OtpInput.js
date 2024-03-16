@@ -41,6 +41,6 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
               </react_native_1.Pressable>);
         })}
       </react_native_1.View>
-      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" keyboardType="numeric" textContentType="oneTimeCode" ref={inputRef} autoFocus={autoFocus} style={OtpInput_styles_1.styles.hiddenInput} secureTextEntry={secureTextEntry} autoComplete={react_native_1.Platform.OS === 'android' ? "sms-otp" : "one-time-code"} testID="otp-input-hidden"/>
+      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" keyboardType="numeric" textContentType="oneTimeCode" ref={inputRef} autoFocus={autoFocus} secureTextEntry={secureTextEntry} autoComplete={react_native_1.Platform.OS === "android" ? "sms-otp" : "one-time-code"} aria-disabled={disabled} editable={!disabled} testID="otp-input-hidden" {...textInputProps} style={[OtpInput_styles_1.styles.hiddenInput, textInputProps?.style]}/>
     </react_native_1.View>);
 });
