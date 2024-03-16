@@ -1,8 +1,8 @@
 import { act, renderHook } from "@testing-library/react-native";
 import * as React from "react";
 import { Keyboard } from "react-native";
-import { OtpInputProps } from "./OtpInput.types";
-import { useOtpInput } from "./useOtpInput";
+import { OtpInputProps } from "../OtpInput.types";
+import { useOtpInput } from "../useOtpInput";
 
 const renderUseOtInput = (props?: Partial<OtpInputProps>) =>
   renderHook(() => useOtpInput({ numberOfDigits: 6, ...props }));

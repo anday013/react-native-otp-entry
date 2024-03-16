@@ -1,4 +1,4 @@
-import { ColorValue, TextStyle, ViewStyle } from "react-native";
+import { ColorValue, TextInputProps, TextStyle, ViewStyle } from "react-native";
 
 export interface OtpInputProps {
   numberOfDigits?: number;
@@ -11,6 +11,7 @@ export interface OtpInputProps {
   secureTextEntry?: boolean;
   theme?: Theme;
   disabled?: boolean;
+  textInputProps?: TextInputProps;
 }
 
 export interface OtpInputRef {

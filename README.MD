@@ -11,7 +11,7 @@
 
 ## Features
 
-- Supports OTP input with a fixed number of digits.
+- Simple and easy-to-use OTP input component.
 - Highly customizable appearance and styling.
 - Supports autofill
 - Fully covered with unit tests.
@@ -79,7 +79,8 @@ The `react-native-otp-entry` component accepts the following props:
 | `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                              |
 | `theme`                      | Theme                  | Custom styles for each element.                                                                                |
 | `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
-| `autoComplete`               | string                 | passed to underlying TextInput (see: https://reactnative.dev/docs/textinput#autocomplete)                      |
+| `autoComplete`               | string                 | Default: true. Passed to underlying TextInput (see: https://reactnative.dev/docs/textinput#autocomplete)       |
+| `textInputProps`             | TextInputProps         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
 
 | Theme                          | Type      | Description                                                                        |
 | ------------------------------ | --------- | ---------------------------------------------------------------------------------- |

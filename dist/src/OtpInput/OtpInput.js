@@ -8,7 +8,7 @@ const VerticalStick_1 = require("./VerticalStick");
 const useOtpInput_1 = require("./useOtpInput");
 exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
     const { models: { text, inputRef, focusedInputIndex }, actions: { clear, handlePress, handleTextChange, focus }, forms: { setTextWithRef }, } = (0, useOtpInput_1.useOtpInput)(props);
-    const { disabled, numberOfDigits = 6, autoFocus = true, hideStick, focusColor = "#A4D0A4", focusStickBlinkingDuration, secureTextEntry = false, theme = {}, } = props;
+    const { disabled, numberOfDigits = 6, autoFocus = true, hideStick, focusColor = "#A4D0A4", focusStickBlinkingDuration, secureTextEntry = false, theme = {}, textInputProps, } = props;
     const { containerStyle, inputsContainerStyle, pinCodeContainerStyle, pinCodeTextStyle, focusStickStyle, focusedPinCodeContainerStyle, filledPinCodeContainerStyle, disabledPinCodeContainerStyle, } = theme;
     (0, react_1.useImperativeHandle)(ref, () => ({ clear, focus, setValue: setTextWithRef }));
     const generatePinCodeContainerStyle = (isFocusedInput, char) => {
@@ -41,6 +41,6 @@ exports.OtpInput = (0, react_1.forwardRef)((props, ref) => {
               </react_native_1.Pressable>);
         })}
       </react_native_1.View>
-      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" textContentType="oneTimeCode" ref={inputRef} autoFocus={autoFocus} style={OtpInput_styles_1.styles.hiddenInput} secureTextEntry={secureTextEntry} autoComplete="one-time-code" aria-disabled={disabled} editable={!disabled} testID="otp-input-hidden"/>
+      <react_native_1.TextInput value={text} onChangeText={handleTextChange} maxLength={numberOfDigits} inputMode="numeric" keyboardType="numeric" textContentType="oneTimeCode" ref={inputRef} autoFocus={autoFocus} style={OtpInput_styles_1.styles.hiddenInput} secureTextEntry={secureTextEntry} autoComplete="one-time-code" aria-disabled={disabled} editable={!disabled} testID="otp-input-hidden" {...textInputProps}/>
     </react_native_1.View>);
 });
