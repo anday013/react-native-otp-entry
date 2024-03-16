@@ -7,8 +7,8 @@ import { useOtpInput } from "./useOtpInput";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
-    models: { text, inputRef, focusedInputIndex },
-    actions: { clear, handlePress, handleTextChange, focus },
+    models: { text, inputRef, focusedInputIndex, hasCursor },
+    actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
@@ -63,7 +63,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
           .fill(0)
           .map((_, index) => {
             const char = text[index];
-            const isFocusedInput = index === focusedInputIndex;
+            const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(hasCursor);
 
             return (
               <Pressable
@@ -102,6 +102,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         aria-disabled={disabled}
         editable={!disabled}
         testID="otp-input-hidden"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         {...textInputProps}
         style={[styles.hiddenInput, textInputProps?.style]}
       />

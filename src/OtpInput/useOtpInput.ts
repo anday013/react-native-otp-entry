@@ -7,8 +7,10 @@ export const useOtpInput = ({
   onFilled,
   numberOfDigits = 6,
   disabled,
+  autoFocus = true,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
+  const [hasCursor, setHasCursor] = useState(autoFocus);
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
 
@@ -42,9 +44,17 @@ export const useOtpInput = ({
     inputRef.current?.focus();
   };
 
+  const handleFocus = () => {
+    setHasCursor(true);
+  };
+
+  const handleBlur = () => {
+    setHasCursor(false);
+  };
+
   return {
-    models: { text, inputRef, focusedInputIndex },
-    actions: { handlePress, handleTextChange, clear, focus },
+    models: { text, inputRef, focusedInputIndex, hasCursor },
+    actions: { handlePress, handleTextChange, clear, focus, handleFocus, handleBlur },
     forms: { setText, setTextWithRef },
   };
 };

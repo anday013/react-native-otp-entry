@@ -391,7 +391,9 @@ exports[`OtpInput UI should render correctly 1`] = `
     inputMode="numeric"
     keyboardType="numeric"
     maxLength={6}
+    onBlur={[Function]}
     onChangeText={[Function]}
+    onFocus={[Function]}
     secureTextEntry={false}
     style={
       [
