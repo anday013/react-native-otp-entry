@@ -394,14 +394,17 @@ exports[`OtpInput UI should render correctly 1`] = `
     onChangeText={[Function]}
     secureTextEntry={false}
     style={
-      {
-        "bottom": 0,
-        "left": 0,
-        "opacity": 0.01,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      }
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "opacity": 0.01,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
     }
     testID="otp-input-hidden"
     textContentType="oneTimeCode"
