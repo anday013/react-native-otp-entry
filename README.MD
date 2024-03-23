@@ -5,7 +5,7 @@
 [![cov](https://anday013.github.io/react-native-otp-entry/badges/coverage.svg?&kill_cache=1)](https://github.com/anday013/react-native-otp-entry/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?&kill_cache=1)](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE)
 
-`react-native-otp-entry` is a simple and highly customizable React Native component for entering OTP (One-Time Password). It provides an intuitive and user-friendly interface for inputting one-time passwords in your React Native applications.
+`react-native-otp-entry` is a simple and highly customizable React Native component for entering OTP (One-Time Password) on iOS, Android, and Web. It provides an intuitive and user-friendly interface for inputting one-time passwords in your React Native applications.
 
 ![Demo](otp_demo.gif)
 
@@ -14,10 +14,18 @@
 - Simple and easy-to-use OTP input component.
 - Highly customizable appearance and styling.
 - Supports autofill
-- Fully covered with unit tests.
-- Seamless integration with React Native and Expo applications.
+- Effortlessly integrates with **React Native**, **Expo**, and **React Native Web** platforms.
 - Fully typed with TypeScript.
+- Fully covered with unit tests.
 - Paste functionality.
+
+## Demo
+
+Try out React Native OTP Entry in action on Snack Expo:
+
+[![Snack Expo App](https://img.shields.io/badge/Snack-fff.svg?style=for-the-badge&logo=EXPO&labelColor=000&logoColor=FFF)](https://snack.expo.dev/@anday013/demo-react-native-otp-entry)
+
+or https://snack.expo.dev/@anday013/demo-react-native-otp-entry
 
 ## Installation
 
@@ -82,16 +90,16 @@ The `react-native-otp-entry` component accepts the following props:
 | `disabled`                   | boolean                | Default: false. Disable the input                                                                              |
 | `textInputProps`             | TextInputProps         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
 
-| Theme                          | Type      | Description                                                                        |
-| ------------------------------ | --------- | ---------------------------------------------------------------------------------- |
-| `containerStyle`               | ViewStyle | Custom styles for the root `View`.                                                 |
-| `inputsContainerStyle`         | ViewStyle | Custom styles for the container that holds the input fields.                       |
-| `pinCodeContainerStyle`        | ViewStyle | Custom styles for the container that wraps each individual digit in the OTP entry. |
-| `pinCodeTextStyle`             | TextStyle | Custom styles for the text within each individual digit in the OTP entry.          |
-| `focusStickStyle`              | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
-| `focusedPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is focused.                              |
-| `filledPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it has a value.                             |
-| `disabledPinCodeContainerStyle`| ViewStyle | Custom styles for the input field when it is disabled.                             |
+| Theme                           | Type      | Description                                                                        |
+| ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
+| `containerStyle`                | ViewStyle | Custom styles for the root `View`.                                                 |
+| `inputsContainerStyle`          | ViewStyle | Custom styles for the container that holds the input fields.                       |
+| `pinCodeContainerStyle`         | ViewStyle | Custom styles for the container that wraps each individual digit in the OTP entry. |
+| `pinCodeTextStyle`              | TextStyle | Custom styles for the text within each individual digit in the OTP entry.          |
+| `focusStickStyle`               | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
+| `focusedPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it is focused.                              |
+| `filledPinCodeContainerStyle`   | ViewStyle | Custom styles for the input field when it has a value.                             |
+| `disabledPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is disabled.                             |
 
 Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
 
