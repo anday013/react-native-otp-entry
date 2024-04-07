@@ -4,6 +4,10 @@
   "description": "A fully modifiable OTP Input Component for React Native",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/src/**/__tests__"
+  ],
   "repository": "git@github.com:anday2000/react-native-otp-entry.git",
   "scripts": {
     "test": "jest .",
