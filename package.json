@@ -2,8 +2,8 @@
   "name": "react-native-otp-entry",
   "version": "1.6.0",
   "description": "A fully modifiable OTP Input Component for React Native",
-  "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "!dist/src/**/__tests__"
@@ -13,7 +13,8 @@
     "test": "jest .",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage --coverageDirectory=\"./coverage\"",
-    "build": "tsc"
+    "build:dev": "tsc",
+    "build:prod": "tsc -p tsconfig.prod.json"
   },
   "keywords": [
     "react-native",
