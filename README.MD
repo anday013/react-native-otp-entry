@@ -93,7 +93,6 @@ The `react-native-otp-entry` component accepts the following props:
 | Theme                           | Type      | Description                                                                        |
 | ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
 | `containerStyle`                | ViewStyle | Custom styles for the root `View`.                                                 |
-| `inputsContainerStyle`          | ViewStyle | Custom styles for the container that holds the input fields.                       |
 | `pinCodeContainerStyle`         | ViewStyle | Custom styles for the container that wraps each individual digit in the OTP entry. |
 | `pinCodeTextStyle`              | TextStyle | Custom styles for the text within each individual digit in the OTP entry.          |
 | `focusStickStyle`               | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
@@ -102,6 +101,8 @@ The `react-native-otp-entry` component accepts the following props:
 | `disabledPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is disabled.                             |
 
 Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
+
+![Theme](otp.drawio.svg)
 
 ## Ref
 
