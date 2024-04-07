@@ -14,7 +14,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage --coverageDirectory=\"./coverage\"",
     "build:dev": "tsc",
-    "build:prod": "tsc -p tsconfig.prod.json"
+    "build:prod": "tsc -p tsconfig.prod.json",
+    "prepublishOnly": "npm run build:prod"
   },
   "keywords": [
     "react-native",
