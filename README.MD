@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/react-native-otp-entry.svg?&kill_cache=1)](https://badge.fury.io/js/react-native-otp-entry)
 [![npm](https://img.shields.io/npm/dm/react-native-otp-entry.svg?&kill_cache=1)]()
+[![install size](https://packagephobia.com/badge?p=react-native-otp-entry)](https://packagephobia.com/result?p=react-native-otp-entry)
 [![cov](https://anday013.github.io/react-native-otp-entry/badges/coverage.svg?&kill_cache=1)](https://github.com/anday013/react-native-otp-entry/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?&kill_cache=1)](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE)
 
