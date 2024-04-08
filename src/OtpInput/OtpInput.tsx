@@ -92,8 +92,6 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         value={text}
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
-        inputMode="numeric"
-        keyboardType="numeric"
         textContentType="oneTimeCode"
         ref={inputRef}
         autoFocus={autoFocus}
@@ -104,6 +102,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         testID="otp-input-hidden"
         onFocus={handleFocus}
         onBlur={handleBlur}
+        inputMode={textInputProps?.inputMode || "numeric"}
+        keyboardType={textInputProps?.keyboardType || "numeric"}
         {...textInputProps}
         style={[styles.hiddenInput, textInputProps?.style]}
       />
