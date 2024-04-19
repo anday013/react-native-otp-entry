@@ -59,7 +59,7 @@ declare module "OTPInput" {
     containerStyle?: ViewStyle;
 
     /**
-     * Custom styles for the container that holds the input fields.
+     * @deprecated Use `containerStyle` instead
      */
     inputsContainerStyle?: ViewStyle;
 

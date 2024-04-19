@@ -22,6 +22,9 @@ export interface OtpInputRef {
 
 export interface Theme {
   containerStyle?: ViewStyle;
+  /**
+   * @deprecated Use `containerStyle` instead
+   */
   inputsContainerStyle?: ViewStyle;
   pinCodeContainerStyle?: ViewStyle;
   filledPinCodeContainerStyle?: ViewStyle;
