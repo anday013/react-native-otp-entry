@@ -57,39 +57,37 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <View style={[styles.inputsContainer, inputsContainerStyle]}>
-        {Array(numberOfDigits)
-          .fill(0)
-          .map((_, index) => {
-            const char = text[index];
-            const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
-            const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
-            const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
+    <View style={[styles.container, containerStyle, inputsContainerStyle]}>
+      {Array(numberOfDigits)
+        .fill(0)
+        .map((_, index) => {
+          const char = text[index];
+          const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
+          const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
+          const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
 
-            return (
-              <Pressable
-                key={`${char}-${index}`}
-                disabled={disabled}
-                onPress={handlePress}
-                style={generatePinCodeContainerStyle(isFocusedContainer, char)}
-                testID="otp-input"
-              >
-                {isFocusedInput && !hideStick ? (
-                  <VerticalStick
-                    focusColor={focusColor}
-                    style={focusStickStyle}
-                    focusStickBlinkingDuration={focusStickBlinkingDuration}
-                  />
-                ) : (
-                  <Text style={[styles.codeText, pinCodeTextStyle]}>
-                    {char && secureTextEntry ? "•" : char}
-                  </Text>
-                )}
-              </Pressable>
-            );
-          })}
-      </View>
+          return (
+            <Pressable
+              key={`${char}-${index}`}
+              disabled={disabled}
+              onPress={handlePress}
+              style={generatePinCodeContainerStyle(isFocusedContainer, char)}
+              testID="otp-input"
+            >
+              {isFocusedInput && !hideStick ? (
+                <VerticalStick
+                  focusColor={focusColor}
+                  style={focusStickStyle}
+                  focusStickBlinkingDuration={focusStickBlinkingDuration}
+                />
+              ) : (
+                <Text style={[styles.codeText, pinCodeTextStyle]}>
+                  {char && secureTextEntry ? "•" : char}
+                </Text>
+              )}
+            </Pressable>
+          );
+        })}
       <TextInput
         value={text}
         onChangeText={handleTextChange}
