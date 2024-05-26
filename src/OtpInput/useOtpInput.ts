@@ -10,7 +10,7 @@ export const useOtpInput = ({
   autoFocus = true,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
-  const [hasCursor, setHasCursor] = useState(autoFocus);
+  const [isFocused, setIsFocused] = useState(autoFocus);
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
 
@@ -45,15 +45,15 @@ export const useOtpInput = ({
   };
 
   const handleFocus = () => {
-    setHasCursor(true);
+    setIsFocused(true);
   };
 
   const handleBlur = () => {
-    setHasCursor(false);
+    setIsFocused(false);
   };
 
   return {
-    models: { text, inputRef, focusedInputIndex, hasCursor },
+    models: { text, inputRef, focusedInputIndex, isFocused },
     actions: { handlePress, handleTextChange, clear, focus, handleFocus, handleBlur },
     forms: { setText, setTextWithRef },
   };

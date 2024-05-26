@@ -102,6 +102,16 @@ describe("OtpInput", () => {
       expect(inputs[0]).toHaveStyle({ borderColor: "#000" });
     });
 
+    test("should set focusColor to border of the last input if all inputs are filled and input is still focused", () => {
+      renderOtpInput({ focusColor: "red", numberOfDigits: 6 });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123456");
+
+      const inputs = screen.getAllByTestId("otp-input");
+      expect(inputs[5]).toHaveStyle({ borderColor: "red" });
+    });
+
     test("focusedPinCodeContainerStyle should not be overridden by theme", () => {
       renderOtpInput({
         focusColor: "#000",

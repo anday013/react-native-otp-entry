@@ -7,7 +7,7 @@ import { useOtpInput } from "./useOtpInput";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
-    models: { text, inputRef, focusedInputIndex, hasCursor },
+    models: { text, inputRef, focusedInputIndex, isFocused },
     actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
     forms: { setTextWithRef },
   } = useOtpInput(props);
@@ -35,13 +35,13 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
 
-  const generatePinCodeContainerStyle = (isFocusedInput: boolean, char: string) => {
+  const generatePinCodeContainerStyle = (isFocusedContainer: boolean, char: string) => {
     const stylesArray = [styles.codeContainer, pinCodeContainerStyle];
-    if (focusColor && isFocusedInput) {
+    if (focusColor && isFocusedContainer) {
       stylesArray.push({ borderColor: focusColor });
     }
 
-    if (focusedPinCodeContainerStyle && isFocusedInput) {
+    if (focusedPinCodeContainerStyle && isFocusedContainer) {
       stylesArray.push(focusedPinCodeContainerStyle);
     }
 
@@ -63,14 +63,16 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
           .fill(0)
           .map((_, index) => {
             const char = text[index];
-            const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(hasCursor);
+            const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
+            const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
+            const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused))
 
             return (
               <Pressable
                 key={`${char}-${index}`}
                 disabled={disabled}
                 onPress={handlePress}
-                style={generatePinCodeContainerStyle(isFocusedInput, char)}
+                style={generatePinCodeContainerStyle(isFocusedContainer, char)}
                 testID="otp-input"
               >
                 {isFocusedInput && !hideStick ? (
