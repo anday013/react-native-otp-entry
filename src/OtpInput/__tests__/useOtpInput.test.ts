@@ -153,6 +153,7 @@ describe("useOtpInput", () => {
       expect(mockSetState).toHaveBeenCalledWith(true);
     });
   });
+
   test("handleBlur() should set hasCurrentFocus to false", () => {
     const mockSetState = jest.fn();
     jest.spyOn(React, "useState").mockImplementation(() => [true, mockSetState]);
@@ -161,6 +162,28 @@ describe("useOtpInput", () => {
 
     act(() => {
       expect(mockSetState).toHaveBeenCalledWith(false);
+    });
+  });
+
+  test("should blur the input when filled if blurOnFilled is 'true'", () => {
+    jest.spyOn(React, "useRef").mockReturnValue({ current: { blur: jest.fn() } } as any);
+
+    const { result } = renderUseOtInput({ blurOnFilled: true });
+    result.current.actions.handleTextChange("123456");
+
+    act(() => {
+      expect(result.current.models.inputRef.current?.blur).toHaveBeenCalled();
+    });
+  });
+
+  test("should NOT blur the input when filled if blurOnFilled is 'true'", () => {
+    jest.spyOn(React, "useRef").mockReturnValue({ current: { blur: jest.fn() } } as any);
+
+    const { result } = renderUseOtInput();
+    result.current.actions.handleTextChange("123456");
+
+    act(() => {
+      expect(result.current.models.inputRef.current?.blur).not.toHaveBeenCalled();
     });
   });
 });

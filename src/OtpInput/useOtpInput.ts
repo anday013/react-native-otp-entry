@@ -8,6 +8,7 @@ export const useOtpInput = ({
   numberOfDigits = 6,
   disabled,
   autoFocus = true,
+  blurOnFilled,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(autoFocus);
@@ -28,6 +29,7 @@ export const useOtpInput = ({
     onTextChange?.(value);
     if (value.length === numberOfDigits) {
       onFilled?.(value);
+      blurOnFilled && inputRef.current?.blur();
     }
   };
 
