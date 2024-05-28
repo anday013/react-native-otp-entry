@@ -104,7 +104,9 @@ The `react-native-otp-entry` component accepts the following props:
 | `filledPinCodeContainerStyle`   | ViewStyle | Custom styles for the input field when it has a value.                             |
 | `disabledPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is disabled.                             |
 
-Note: The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
+**Note:** The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
+
+**Tip:** If you have difficulties while applying `gap` or in any other style property to set a suitable space between the OTP input containers, please set the `width` in `containerStyle` to `'auto'` or `undefined`, as it is been set to `'100%'` by default.
 
 ![Theme](otp.drawio.svg)
 
