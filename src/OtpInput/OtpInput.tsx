@@ -65,7 +65,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
             const char = text[index];
             const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
             const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
-            const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused))
+            const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
 
             return (
               <Pressable

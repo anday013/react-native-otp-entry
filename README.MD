@@ -84,14 +84,15 @@ The `react-native-otp-entry` component accepts the following props:
 | ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                         |
 | `textInputProps`             | TextInputProps         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
-| `autoFocus`                  | boolean                | Default: true. Set autofocus.                                                                                  |
+| `autoFocus`                  | boolean                | _Default: true_. Sets autofocus.                                                                               |
 | `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                              |
 | `onTextChange`               | (text: string) => void | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
 | `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
-| `hideStick`                  | boolean                | Hide cursor of the focused input.                                                                              |
+| `blurOnFilled`               | boolean                | _Default: false_. Blurs (unfocuses) the input when the OTP input is fully filled.                              |
+| `hideStick`                  | boolean                | _Default: false_. Hides cursor of the focused input.                                                           |
 | `theme`                      | Theme                  | Custom styles for each element.                                                                                |
 | `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
-| `disabled`                   | boolean                | Default: false. Disable the input                                                                              |
+| `disabled`                   | boolean                | _Default: false_. Disables the input                                                                           |
 
 | Theme                           | Type      | Description                                                                        |
 | ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
