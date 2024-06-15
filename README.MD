@@ -80,19 +80,20 @@ yarn add react-native-otp-entry
 
 The `react-native-otp-entry` component accepts the following props:
 
-| Prop                         | Type                   | Description                                                                                                    |
-| ---------------------------- | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `numberOfDigits`             | number                 | The number of digits to be displayed in the OTP entry.                                                         |
-| `textInputProps`             | TextInputProps         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
-| `autoFocus`                  | boolean                | _Default: true_. Sets autofocus.                                                                               |
-| `focusColor`                 | ColorValue             | The color of the input field border and stick when it is focused.                                              |
-| `onTextChange`               | (text: string) => void | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
-| `onFilled`                   | (text: string) => void | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
-| `blurOnFilled`               | boolean                | _Default: false_. Blurs (unfocuses) the input when the OTP input is fully filled.                              |
-| `hideStick`                  | boolean                | _Default: false_. Hides cursor of the focused input.                                                           |
-| `theme`                      | Theme                  | Custom styles for each element.                                                                                |
-| `focusStickBlinkingDuration` | number                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
-| `disabled`                   | boolean                | _Default: false_. Disables the input                                                                           |
+| Prop                         | Type                                   | Description                                                                                                    |
+| ---------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `numberOfDigits`             | number                                 | The number of digits to be displayed in the OTP entry.                                                         |
+| `textInputProps`             | TextInputProps                         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
+| `autoFocus`                  | boolean                                | _Default: true_. Sets autofocus.                                                                               |
+| `focusColor`                 | ColorValue                             | The color of the input field border and stick when it is focused.                                              |
+| `onTextChange`               | (text: string) => void                 | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
+| `onFilled`                   | (text: string) => void                 | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
+| `blurOnFilled`               | boolean                                | _Default: false_. Blurs (unfocuses) the input when the OTP input is fully filled.                              |
+| `hideStick`                  | boolean                                | _Default: false_. Hides cursor of the focused input.                                                           |
+| `theme`                      | Theme                                  | Custom styles for each element.                                                                                |
+| `focusStickBlinkingDuration` | number                                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
+| `disabled`                   | boolean                                | _Default: false_. Disables the input                                                                           |
+| `type`                       | 'alpha' \| 'numeric' \| 'alphanumeric' | The type of input. 'alpha': letters only, 'numeric': numbers only, 'alphanumeric': letters or numbers.         |
 
 | Theme                           | Type      | Description                                                                        |
 | ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
