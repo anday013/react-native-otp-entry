@@ -13,6 +13,7 @@ export interface OtpInputProps {
   theme?: Theme;
   disabled?: boolean;
   textInputProps?: TextInputProps;
+  type?: "alpha" | "numeric" | "alphanumeric";
 }
 
 export interface OtpInputRef {

@@ -9,6 +9,7 @@ export const useOtpInput = ({
   disabled,
   autoFocus = true,
   blurOnFilled,
+  type,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(autoFocus);
@@ -24,6 +25,9 @@ export const useOtpInput = ({
   };
 
   const handleTextChange = (value: string) => {
+    if (type === "alpha" && /[^a-zA-Z]/.test(value)) return;
+    if (type === "numeric" && /[^\d]/.test(value)) return;
+    if (type === "alphanumeric" && /[^a-zA-Z\d]/.test(value)) return;
     if (disabled) return;
     setText(value);
     onTextChange?.(value);
