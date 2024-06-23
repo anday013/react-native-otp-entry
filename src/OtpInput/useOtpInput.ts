@@ -15,6 +15,11 @@ export const useOtpInput = ({
   const [isFocused, setIsFocused] = useState(autoFocus);
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
+  const regexMap = {
+    alpha: /[^a-zA-Z]/,
+    numeric: /[^\d]/,
+    alphanumeric: /[^a-zA-Z\d]/,
+  };
 
   const handlePress = () => {
     // To fix bug when keyboard is not popping up after being dismissed
@@ -25,9 +30,7 @@ export const useOtpInput = ({
   };
 
   const handleTextChange = (value: string) => {
-    if (type === "alpha" && /[^a-zA-Z]/.test(value)) return;
-    if (type === "numeric" && /[^\d]/.test(value)) return;
-    if (type === "alphanumeric" && /[^a-zA-Z\d]/.test(value)) return;
+    if (type && regexMap[type].test(value)) return;
     if (disabled) return;
     setText(value);
     onTextChange?.(value);
