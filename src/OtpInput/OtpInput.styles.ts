@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   hiddenInput: {
     ...StyleSheet.absoluteFillObject,
-    opacity: 0.01,
+    opacity: 0,
   },
   stick: {
     width: 2,
