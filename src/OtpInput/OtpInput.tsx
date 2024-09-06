@@ -46,7 +46,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     }
 
     if (filledPinCodeContainerStyle && Boolean(char)) {
-      stylesArray.push(filledPinCodeContainerStyle);
+      stylesArray.push(filledPinCodeContainerStyle)
     }
 
     if (disabledPinCodeContainerStyle && disabled) {
