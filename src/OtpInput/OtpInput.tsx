@@ -5,7 +5,7 @@ import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
 import { useOtpInput } from "./useOtpInput";
 
-export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
+export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props: OtpInputProps, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex, isFocused },
     actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
@@ -21,6 +21,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     secureTextEntry = false,
     theme = {},
     textInputProps,
+    type = 'numeric',
   } = props;
   const {
     containerStyle,
@@ -92,8 +93,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         value={text}
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
-        inputMode="numeric"
-        keyboardType="numeric"
+        inputMode={type === 'numeric' ? type : 'text'}
         textContentType="oneTimeCode"
         ref={inputRef}
         autoFocus={autoFocus}
