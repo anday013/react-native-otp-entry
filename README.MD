@@ -94,6 +94,7 @@ The `react-native-otp-entry` component accepts the following props:
 | `focusStickBlinkingDuration` | number                                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
 | `disabled`                   | boolean                                | _Default: false_. Disables the input                                                                           |
 | `type`                       | 'alpha' \| 'numeric' \| 'alphanumeric' | The type of input. 'alpha': letters only, 'numeric': numbers only, 'alphanumeric': letters or numbers.         |
+| `secureTextEntry`            | boolean                                | _Default: false_. Obscures the text entered so that sensitive text like PIN stay secure.                       |
 
 | Theme                           | Type      | Description                                                                        |
 | ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
