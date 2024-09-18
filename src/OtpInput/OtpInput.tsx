@@ -5,7 +5,7 @@ import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
 import { useOtpInput } from "./useOtpInput";
 
-export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props: OtpInputProps, ref) => {
+export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex, isFocused },
     actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
