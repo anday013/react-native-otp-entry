@@ -131,3 +131,9 @@ This project is licensed under the [MIT License](https://github.com/your-usernam
 Contributions are welcome! Please feel free to open issues or submit pull requests.
 
 If you find a bug or have any feature requests, please open an issue :)
+
+## Support Me
+
+If you find this project helpful and want to support my work, consider buying me a coffee! ☕
+
+[![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/anday013)
