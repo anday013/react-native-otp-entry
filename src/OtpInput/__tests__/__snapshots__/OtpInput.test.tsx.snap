@@ -379,7 +379,6 @@ exports[`OtpInput UI should render correctly 1`] = `
     autoFocus={true}
     editable={true}
     inputMode="numeric"
-    keyboardType="numeric"
     maxLength={6}
     onBlur={[Function]}
     onChangeText={[Function]}

@@ -21,6 +21,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     secureTextEntry = false,
     theme = {},
     textInputProps,
+    type = 'numeric',
   } = props;
   const {
     containerStyle,
@@ -92,8 +93,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         value={text}
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
-        inputMode="numeric"
-        keyboardType="numeric"
+        inputMode={type === 'numeric' ? type : 'text'}
         textContentType="oneTimeCode"
         ref={inputRef}
         autoFocus={autoFocus}
