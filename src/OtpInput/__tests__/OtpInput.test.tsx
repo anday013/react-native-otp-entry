@@ -174,6 +174,25 @@ describe("OtpInput", () => {
 
       expect(input.props.autoComplete).toBe("one-time-code");
     });
+
+    test('inputMode should be set "numeric" if type is "numeric"', () => {
+      renderOtpInput({ type: "numeric" });
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input.props.inputMode).toBe("numeric");
+    });
+
+    test.each(["alpha", "alphanumeric"])(
+      'inputMode should be set "text" if type is "%s"',
+      (type: any) => {
+        renderOtpInput({ type });
+
+        const input = screen.getByTestId("otp-input-hidden");
+
+        expect(input.props.inputMode).toBe("text");
+      }
+    );
   });
   describe("Logic", () => {
     test("should split text on screen from the text written in the hidden input", () => {
