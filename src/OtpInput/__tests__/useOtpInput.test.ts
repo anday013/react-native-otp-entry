@@ -163,33 +163,33 @@ describe("useOtpInput", () => {
     });
   });
 
-   test("handleTextChange() should NOT call setText() and onTextChange() with value when type is numeric and value has letters", () => {
-     const value = "abc123";
-     const mockOnTextChange = jest.fn();
-     jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
+  test("handleTextChange() should NOT call setText() and onTextChange() with value when type is numeric and value has letters", () => {
+    const value = "abc123";
+    const mockOnTextChange = jest.fn();
+    jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
 
-     const { result } = renderUseOtInput({ onTextChange: mockOnTextChange, type: "numeric" });
-     result.current.actions.handleTextChange(value);
+    const { result } = renderUseOtInput({ onTextChange: mockOnTextChange, type: "numeric" });
+    result.current.actions.handleTextChange(value);
 
-     act(() => {
-       expect(result.current.forms.setText).not.toHaveBeenCalledWith(value);
-       expect(mockOnTextChange).not.toHaveBeenCalledWith(value);
-     });
-   });
+    act(() => {
+      expect(result.current.forms.setText).not.toHaveBeenCalledWith(value);
+      expect(mockOnTextChange).not.toHaveBeenCalledWith(value);
+    });
+  });
 
-   test("handleTextChange() should NOT call setText() and onTextChange() with value when type is alphanumeric and value has special characters", () => {
-     const value = "a1/*-+";
-     const mockOnTextChange = jest.fn();
-     jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
+  test("handleTextChange() should NOT call setText() and onTextChange() with value when type is alphanumeric and value has special characters", () => {
+    const value = "a1/*-+";
+    const mockOnTextChange = jest.fn();
+    jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
 
-     const { result } = renderUseOtInput({ onTextChange: mockOnTextChange, type: "alphanumeric" });
-     result.current.actions.handleTextChange(value);
+    const { result } = renderUseOtInput({ onTextChange: mockOnTextChange, type: "alphanumeric" });
+    result.current.actions.handleTextChange(value);
 
-     act(() => {
-       expect(result.current.forms.setText).not.toHaveBeenCalledWith(value);
-       expect(mockOnTextChange).not.toHaveBeenCalledWith(value);
-     });
-   });
+    act(() => {
+      expect(result.current.forms.setText).not.toHaveBeenCalledWith(value);
+      expect(mockOnTextChange).not.toHaveBeenCalledWith(value);
+    });
+  });
 
   test("handleTextChange() should not proceed if the input is disabled", () => {
     const value = "123456";
@@ -246,6 +246,32 @@ describe("useOtpInput", () => {
 
     act(() => {
       expect(mockSetState).toHaveBeenCalledWith(false);
+    });
+  });
+
+  test("handleFocus() should run user provided callback", () => {
+    const mockOnFocus = jest.fn();
+
+    const { result } = renderUseOtInput({
+      onFocus: mockOnFocus,
+    });
+    result.current.actions.handleFocus();
+
+    act(() => {
+      expect(mockOnFocus).toBeCalled();
+    });
+  });
+
+  test("handleBlur() should run user provided callback", () => {
+    const mockOnBlur = jest.fn();
+
+    const { result } = renderUseOtInput({
+      onBlur: mockOnBlur,
+    });
+    result.current.actions.handleBlur();
+
+    act(() => {
+      expect(mockOnBlur).toBeCalled();
     });
   });
 

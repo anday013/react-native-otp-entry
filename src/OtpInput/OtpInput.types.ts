@@ -6,6 +6,8 @@ export interface OtpInputProps {
   focusColor?: ColorValue;
   onTextChange?: (text: string) => void;
   onFilled?: (text: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   blurOnFilled?: boolean;
   hideStick?: boolean;
   focusStickBlinkingDuration?: number;

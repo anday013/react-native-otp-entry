@@ -10,6 +10,8 @@ export const useOtpInput = ({
   autoFocus = true,
   blurOnFilled,
   type,
+  onFocus,
+  onBlur,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
   const [isFocused, setIsFocused] = useState(autoFocus);
@@ -55,10 +57,12 @@ export const useOtpInput = ({
 
   const handleFocus = () => {
     setIsFocused(true);
+    onFocus?.();
   };
 
   const handleBlur = () => {
     setIsFocused(false);
+    onBlur?.();
   };
 
   return {

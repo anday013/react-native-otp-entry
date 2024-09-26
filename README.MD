@@ -95,6 +95,8 @@ The `react-native-otp-entry` component accepts the following props:
 | `disabled`                   | boolean                                | _Default: false_. Disables the input                                                                           |
 | `type`                       | 'alpha' \| 'numeric' \| 'alphanumeric' | The type of input. 'alpha': letters only, 'numeric': numbers only, 'alphanumeric': letters or numbers.         |
 | `secureTextEntry`            | boolean                                | _Default: false_. Obscures the text entered so that sensitive text like PIN stay secure.                       |
+| `onFocus`                    | () => void                             | A callback function is invoked when the OTP input is focused.                                                  |
+| `onBlur`                     | () => void                             | A callback function is invoked when the OTP input is blurred.                                                  |
 
 | Theme                           | Type      | Description                                                                        |
 | ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
