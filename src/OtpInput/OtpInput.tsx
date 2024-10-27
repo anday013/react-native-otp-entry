@@ -1,4 +1,5 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import * as React from "react";
+import { forwardRef, useImperativeHandle } from "react";
 import { Platform, Pressable, Text, TextInput, View } from "react-native";
 import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";

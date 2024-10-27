@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react-native";
+import * as React from "react";
 import { VerticalStick } from "../VerticalStick";
 
 describe("VerticalStick", () => {

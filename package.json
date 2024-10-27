@@ -11,11 +11,12 @@
   "repository": "git@github.com:anday2000/react-native-otp-entry.git",
   "scripts": {
     "test": "jest .",
+    "ts:check": "tsc --noEmit",
     "test:watch": "jest --watch",
     "test:coverage": "jest --collectCoverage --coverageDirectory=\"./coverage\"",
     "build:dev": "tsc",
     "build:prod": "tsc -p tsconfig.prod.json",
-    "prepublishOnly": "npm install && npm run build:prod",
+    "prepublishOnly": "npm install && npm run test && npm run ts:check && npm run build:prod",
     "prepare": "npm run build:prod"
   },
   "keywords": [
