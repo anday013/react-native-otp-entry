@@ -2,11 +2,12 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ESNext",
-    "jsx": "react-native",
+    "jsx": "react",
     "outDir": "dist",
     "declaration": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true
   },
   "include": ["src", "jest.config.ts", "jest.setupFilesAfterEnv.ts"],
   "exclude": ["node_modules"]

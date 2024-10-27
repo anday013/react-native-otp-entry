@@ -1,3 +1,4 @@
+import * as React from "react";
 import { memo, useEffect, useRef } from "react";
 import { Animated, ColorValue, View, ViewStyle } from "react-native";
 import { styles } from "./OtpInput.styles";
