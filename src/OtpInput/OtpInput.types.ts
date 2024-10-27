@@ -16,6 +16,7 @@ export interface OtpInputProps {
   disabled?: boolean;
   textInputProps?: TextInputProps;
   type?: "alpha" | "numeric" | "alphanumeric";
+  useAnimatedComponents?: boolean;
 }
 
 export interface OtpInputRef {

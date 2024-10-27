@@ -1,5 +1,5 @@
-import { forwardRef, useImperativeHandle } from "react";
-import { Platform, Pressable, Text, TextInput, View } from "react-native";
+import { forwardRef, useImperativeHandle, useMemo } from "react";
+import { Animated, Platform, Pressable, Text, TextInput, View } from "react-native";
 import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
@@ -22,6 +22,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     theme = {},
     textInputProps,
     type = "numeric",
+    useAnimatedComponents = false,
   } = props;
   const {
     containerStyle,
@@ -57,8 +58,19 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     return stylesArray;
   };
 
+  const { ViewComponent, PressableComponent, TextComponent } = useMemo(() => {
+    if (useAnimatedComponents) {
+      return {
+        ViewComponent: Animated.View,
+        PressableComponent: Animated.createAnimatedComponent(Pressable),
+        TextComponent: Animated.Text,
+      };
+    }
+    return { ViewComponent: View, PressableComponent: Pressable, TextComponent: Text };
+  }, [useAnimatedComponents]);
+
   return (
-    <View style={[styles.container, containerStyle, inputsContainerStyle]}>
+    <ViewComponent style={[styles.container, containerStyle, inputsContainerStyle]}>
       {Array(numberOfDigits)
         .fill(0)
         .map((_, index) => {
@@ -68,7 +80,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
           const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
 
           return (
-            <Pressable
+            <PressableComponent
               key={`${char}-${index}`}
               disabled={disabled}
               onPress={handlePress}
@@ -82,11 +94,11 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                   focusStickBlinkingDuration={focusStickBlinkingDuration}
                 />
               ) : (
-                <Text style={[styles.codeText, pinCodeTextStyle]}>
+                <TextComponent style={[styles.codeText, pinCodeTextStyle]}>
                   {char && secureTextEntry ? "•" : char}
-                </Text>
+                </TextComponent>
               )}
-            </Pressable>
+            </PressableComponent>
           );
         })}
       <TextInput
@@ -107,6 +119,6 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         {...textInputProps}
         style={[styles.hiddenInput, textInputProps?.style]}
       />
-    </View>
+    </ViewComponent>
   );
 });
