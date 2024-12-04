@@ -1,6 +1,12 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Keyboard, TextInput } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
+
+const regexMap = {
+  alpha: /[^a-zA-Z]/,
+  numeric: /[^\d]/,
+  alphanumeric: /[^a-zA-Z\d]/,
+};
 
 export const useOtpInput = ({
   onTextChange,
@@ -12,16 +18,21 @@ export const useOtpInput = ({
   type,
   onFocus,
   onBlur,
+  placeholder,
 }: OtpInputProps) => {
   const [text, setText] = useState("");
+  const [isPlaceholderActive, setIsPlaceholderActive] = useState(!!placeholder && !text);
   const [isFocused, setIsFocused] = useState(autoFocus);
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
-  const regexMap = {
-    alpha: /[^a-zA-Z]/,
-    numeric: /[^\d]/,
-    alphanumeric: /[^a-zA-Z\d]/,
-  };
+
+  useEffect(() => {
+    if (placeholder && !isFocused && !text) {
+      setIsPlaceholderActive(true);
+    } else {
+      setIsPlaceholderActive(false);
+    }
+  }, [placeholder, isFocused, text]);
 
   const handlePress = () => {
     // To fix bug when keyboard is not popping up after being dismissed
@@ -66,7 +77,7 @@ export const useOtpInput = ({
   };
 
   return {
-    models: { text, inputRef, focusedInputIndex, isFocused },
+    models: { text, inputRef, focusedInputIndex, isFocused, isPlaceholderActive },
     actions: { handlePress, handleTextChange, clear, focus, handleFocus, handleBlur },
     forms: { setText, setTextWithRef },
   };
