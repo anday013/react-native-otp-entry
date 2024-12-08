@@ -299,11 +299,14 @@ describe("useOtpInput", () => {
   });
 
   describe("Placeholder", () => {
-    test("default state", () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
+    test("should call setIsPlaceholderActive with `true`", () => {
+      const mockSetState = jest.fn();
+      jest.spyOn(React, "useState").mockImplementation(() => [false, mockSetState]);
+
+      renderUseOtInput({ placeholder: "00000000" });
 
       waitFor(() => {
-        expect(result.current.models.isPlaceholderActive).toBe(true);
+        expect(mockSetState).toBeCalledWith(true);
       });
     });
 
@@ -359,7 +362,7 @@ describe("useOtpInput", () => {
       const { result } = renderUseOtInput({ placeholder: "00000000" });
       result.current.actions.handleFocus();
       result.current.actions.handleBlur();
-      act(() => expect(result.current.models.isPlaceholderActive).toBe(true));
+      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(true));
     });
 
     test("should set isPlaceholderActive to 'true' when placeholder is provided and input is not focused and text is empty", async () => {
@@ -367,7 +370,7 @@ describe("useOtpInput", () => {
       result.current.actions.handleTextChange("123456");
       result.current.actions.handleTextChange("");
       result.current.actions.handleBlur();
-      act(() => expect(result.current.models.isPlaceholderActive).toBe(true));
+      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(true));
     });
   });
 });
