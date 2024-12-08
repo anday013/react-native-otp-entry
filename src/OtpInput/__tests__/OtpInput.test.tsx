@@ -1,10 +1,17 @@
-import { act, fireEvent, render, screen } from "@testing-library/react-native";
+import { act, fireEvent, render, screen, waitFor } from "@testing-library/react-native";
 import * as React from "react";
-import { Platform } from "react-native";
+import { Platform, TextInput } from "react-native";
 import { OtpInput } from "../OtpInput";
 import { OtpInputProps, OtpInputRef } from "../OtpInput.types";
 
 const renderOtpInput = (props?: Partial<OtpInputProps>) => render(<OtpInput {...props} />);
+const renderOtpInputWithExtraInput = (props?: Partial<OtpInputProps>) =>
+  render(
+    <>
+      <OtpInput {...props} />
+      <TextInput testID="other-input" />
+    </>
+  );
 
 describe("OtpInput", () => {
   describe("UI", () => {
@@ -255,6 +262,80 @@ describe("OtpInput", () => {
       expect(screen.getByText("4")).toBeTruthy();
       expect(screen.queryByText("5")).toBeFalsy();
       expect(screen.queryByText("6")).toBeFalsy();
+    });
+  });
+  describe("Placeholder", () => {
+    test("should show placeholder if text is empty", () => {
+      renderOtpInput({ placeholder: "000000" });
+
+      const inputs = screen.getAllByTestId("otp-input");
+      inputs.forEach((input) => {
+        waitFor(() => expect(input).toHaveTextContent("0"));
+      });
+    });
+
+    test("should hide placeholder if text is not empty", () => {
+      renderOtpInput({ placeholder: "000000" });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123456");
+
+      const placeholder = screen.queryByText("000000");
+
+      expect(placeholder).toBeFalsy();
+    });
+
+    test("should hide placeholder if input is focused", () => {
+      renderOtpInput({ placeholder: "000000" });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.press(input);
+
+      const placeholder = screen.queryByText("000000");
+
+      expect(placeholder).toBeFalsy();
+    });
+
+    test("should show placeholder if input is blurred and text is empty", () => {
+      renderOtpInputWithExtraInput({ placeholder: "000000" });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      const otherInput = screen.getByTestId("other-input");
+      fireEvent.press(input);
+      // Blur the input
+      fireEvent.press(otherInput);
+
+      const inputs = screen.getAllByTestId("otp-input");
+      inputs.forEach((input) => {
+        waitFor(() => expect(input).toHaveTextContent("0"));
+      });
+    });
+
+    test("should hide placeholder if input is blurred and text is not empty", () => {
+      renderOtpInputWithExtraInput({ placeholder: "000000" });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      const otherInput = screen.getByTestId("other-input");
+      fireEvent.press(input);
+      fireEvent.changeText(input, "123456");
+      // Blur the input
+      fireEvent.press(otherInput);
+
+      const placeholder = screen.queryByText("000000");
+
+      expect(placeholder).toBeFalsy();
+    });
+
+    test('should leave empty spaces if "placeholder" is shorter than "numberOfDigits"', () => {
+      renderOtpInput({ placeholder: "123" });
+
+      const inputs = screen.getAllByTestId("otp-input");
+      waitFor(() => inputs[0].toHaveTextContent("1"));
+      waitFor(() => expect(inputs[1]).toHaveTextContent("2"));
+      waitFor(() => expect(inputs[2]).toHaveTextContent("3"));
+      waitFor(() => expect(inputs[3]).toHaveTextContent(" "));
+      waitFor(() => expect(inputs[4]).toHaveTextContent(" "));
+      waitFor(() => expect(inputs[5]).toHaveTextContent(" "));
     });
   });
 });

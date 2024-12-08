@@ -8,7 +8,7 @@ import { useOtpInput } from "./useOtpInput";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
-    models: { text, inputRef, focusedInputIndex, isFocused },
+    models: { text, inputRef, focusedInputIndex, isFocused, isPlaceholderActive },
     actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
     forms: { setTextWithRef },
   } = useOtpInput(props);
@@ -23,6 +23,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     theme = {},
     textInputProps,
     type = "numeric",
+    placeholder,
   } = props;
   const {
     containerStyle,
@@ -33,6 +34,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusedPinCodeContainerStyle,
     filledPinCodeContainerStyle,
     disabledPinCodeContainerStyle,
+    placeholderTextStyle,
   } = theme;
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
@@ -58,12 +60,17 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     return stylesArray;
   };
 
+  const placeholderStyle = {
+    opacity: isPlaceholderActive ? 0.5 : pinCodeTextStyle?.opacity || 1,
+    ...(isPlaceholderActive ? placeholderTextStyle : []),
+  };
+
   return (
     <View style={[styles.container, containerStyle, inputsContainerStyle]}>
       {Array(numberOfDigits)
         .fill(0)
         .map((_, index) => {
-          const char = text[index];
+          const char = isPlaceholderActive ? placeholder?.[index] || " " : text[index];
           const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
           const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
           const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
@@ -83,7 +90,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                   focusStickBlinkingDuration={focusStickBlinkingDuration}
                 />
               ) : (
-                <Text style={[styles.codeText, pinCodeTextStyle]}>
+                <Text style={[styles.codeText, pinCodeTextStyle, placeholderStyle]}>
                   {char && secureTextEntry ? "•" : char}
                 </Text>
               )}

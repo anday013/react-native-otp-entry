@@ -16,6 +16,7 @@ export interface OtpInputProps {
   disabled?: boolean;
   textInputProps?: TextInputProps;
   type?: "alpha" | "numeric" | "alphanumeric";
+  placeholder?: string;
 }
 
 export interface OtpInputRef {
@@ -36,4 +37,5 @@ export interface Theme {
   focusStickStyle?: ViewStyle;
   focusedPinCodeContainerStyle?: ViewStyle;
   disabledPinCodeContainerStyle?: ViewStyle;
+  placeholderTextStyle?: TextStyle;
 }

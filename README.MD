@@ -83,14 +83,15 @@ The `react-native-otp-entry` component accepts the following props:
 | Prop                         | Type                                   | Description                                                                                                    |
 | ---------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `numberOfDigits`             | number                                 | The number of digits to be displayed in the OTP entry.                                                         |
-| `textInputProps`             | TextInputProps                         | Extra props passed to underlying hidden TextInput (see: https://reactnative.dev/docs/textinput)                |
+| `theme`                      | Theme                                  | Custom styles for each element. (See below)                                                                    |
+| `textInputProps`             | TextInputProps                         | Extra props passed to underlying hidden TextInput (see: <https://reactnative.dev/docs/textinput>)              |
 | `autoFocus`                  | boolean                                | _Default: true_. Sets autofocus.                                                                               |
 | `focusColor`                 | ColorValue                             | The color of the input field border and stick when it is focused.                                              |
+| `placeholder`                | string                                 | Placeholder value to the input.                                                                                |
 | `onTextChange`               | (text: string) => void                 | A callback function is invoked when the OTP text changes. It receives the updated text as an argument.         |
 | `onFilled`                   | (text: string) => void                 | A callback function is invoked when the OTP input is fully filled. It receives a full otp code as an argument. |
 | `blurOnFilled`               | boolean                                | _Default: false_. Blurs (unfocuses) the input when the OTP input is fully filled.                              |
 | `hideStick`                  | boolean                                | _Default: false_. Hides cursor of the focused input.                                                           |
-| `theme`                      | Theme                                  | Custom styles for each element.                                                                                |
 | `focusStickBlinkingDuration` | number                                 | The duration (in milliseconds) for the focus stick to blink.                                                   |
 | `disabled`                   | boolean                                | _Default: false_. Disables the input                                                                           |
 | `type`                       | 'alpha' \| 'numeric' \| 'alphanumeric' | The type of input. 'alpha': letters only, 'numeric': numbers only, 'alphanumeric': letters or numbers.         |
@@ -98,15 +99,16 @@ The `react-native-otp-entry` component accepts the following props:
 | `onFocus`                    | () => void                             | A callback function is invoked when the OTP input is focused.                                                  |
 | `onBlur`                     | () => void                             | A callback function is invoked when the OTP input is blurred.                                                  |
 
-| Theme                           | Type      | Description                                                                        |
-| ------------------------------- | --------- | ---------------------------------------------------------------------------------- |
-| `containerStyle`                | ViewStyle | Custom styles for the root `View`.                                                 |
-| `pinCodeContainerStyle`         | ViewStyle | Custom styles for the container that wraps each individual digit in the OTP entry. |
-| `pinCodeTextStyle`              | TextStyle | Custom styles for the text within each individual digit in the OTP entry.          |
-| `focusStickStyle`               | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.        |
-| `focusedPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it is focused.                              |
-| `filledPinCodeContainerStyle`   | ViewStyle | Custom styles for the input field when it has a value.                             |
-| `disabledPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is disabled.                             |
+| Theme                           | Type      | Description                                                                           |
+| ------------------------------- | --------- | ------------------------------------------------------------------------------------- |
+| `containerStyle`                | ViewStyle | Custom styles for the root `View`.                                                    |
+| `pinCodeContainerStyle`         | ViewStyle | Custom styles for the container that wraps each individual digit in the OTP entry.    |
+| `pinCodeTextStyle`              | TextStyle | Custom styles for the text within each individual digit in the OTP entry.             |
+| `placeholderTextStyle`          | TextStyle | Custom styles for the placeholder text within each individual digit in the OTP entry. |
+| `focusStickStyle`               | ViewStyle | Custom styles for the focus stick, which indicates the focused input field.           |
+| `focusedPinCodeContainerStyle`  | ViewStyle | Custom styles for the input field when it is focused.                                 |
+| `filledPinCodeContainerStyle`   | ViewStyle | Custom styles for the input field when it has a value.                                |
+| `disabledPinCodeContainerStyle` | ViewStyle | Custom styles for the input field when it is disabled.                                |
 
 **Note:** The `ViewStyle` and `TextStyle` types are imported from `react-native` and represent the style objects used in React Native for views and text, respectively.
 
