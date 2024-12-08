@@ -34,6 +34,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     focusedPinCodeContainerStyle,
     filledPinCodeContainerStyle,
     disabledPinCodeContainerStyle,
+    placeholderTextStyle,
   } = theme;
 
   useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
@@ -57,6 +58,11 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     }
 
     return stylesArray;
+  };
+
+  const placeholderStyle = {
+    opacity: isPlaceholderActive ? 0.5 : pinCodeTextStyle?.opacity || 1,
+    ...(isPlaceholderActive ? placeholderTextStyle : []),
   };
 
   return (
@@ -84,13 +90,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                   focusStickBlinkingDuration={focusStickBlinkingDuration}
                 />
               ) : (
-                <Text
-                  style={[
-                    styles.codeText,
-                    { opacity: isPlaceholderActive ? 0.5 : 1 },
-                    pinCodeTextStyle,
-                  ]}
-                >
+                <Text style={[styles.codeText, pinCodeTextStyle, placeholderStyle]}>
                   {char && secureTextEntry ? "•" : char}
                 </Text>
               )}

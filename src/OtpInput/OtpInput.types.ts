@@ -37,4 +37,5 @@ export interface Theme {
   focusStickStyle?: ViewStyle;
   focusedPinCodeContainerStyle?: ViewStyle;
   disabledPinCodeContainerStyle?: ViewStyle;
+  placeholderTextStyle?: TextStyle;
 }

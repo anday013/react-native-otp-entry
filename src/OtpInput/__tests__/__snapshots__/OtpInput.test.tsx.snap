@@ -142,6 +142,9 @@ exports[`OtpInput UI should render correctly 1`] = `
             "fontSize": 28,
           },
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     />
@@ -199,6 +202,9 @@ exports[`OtpInput UI should render correctly 1`] = `
             "fontSize": 28,
           },
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     />
@@ -256,6 +262,9 @@ exports[`OtpInput UI should render correctly 1`] = `
             "fontSize": 28,
           },
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     />
@@ -313,6 +322,9 @@ exports[`OtpInput UI should render correctly 1`] = `
             "fontSize": 28,
           },
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     />
@@ -370,6 +382,9 @@ exports[`OtpInput UI should render correctly 1`] = `
             "fontSize": 28,
           },
           undefined,
+          {
+            "opacity": 1,
+          },
         ]
       }
     />
