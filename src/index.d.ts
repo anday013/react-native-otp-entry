@@ -1,5 +1,5 @@
 declare module "OTPInput" {
-  import { ColorValue, TextStyle, ViewStyle } from "react-native";
+  import { ColorValue, TextInputProps, TextStyle, ViewStyle } from "react-native";
 
   export interface OtpEntryProps {
     /**
@@ -32,6 +32,57 @@ declare module "OTPInput" {
      * The duration (in milliseconds) for the focus stick to blink.
      */
     focusStickBlinkingDuration?: number;
+
+    /**
+     * A callback function that is invoked when the OTP entry is filled.
+     * It receives the filled OTP text as an argument.
+     */
+    onFilled?: (text: string) => void;
+
+    /**
+     * A callback function that is invoked when the OTP entry is focused.
+     */
+    onFocus?: () => void;
+
+    /**
+     * A callback function that is invoked when the OTP entry is blurred.
+     */
+    onBlur?: () => void;
+
+    /**
+     * A flag to determine whether the OTP entry should blur when it is filled.
+     */
+    blurOnFilled?: boolean;
+
+    /**
+     * A flag to determine whether the focus stick should be hidden.
+     */
+    hideStick?: boolean;
+
+    /**
+     * A flag to determine whether the OTP entry should be in secure text entry mode.
+     */
+    secureTextEntry?: boolean;
+
+    /**
+     * A flag to determine whether the OTP entry is disabled.
+     */
+    disabled?: boolean;
+
+    /**
+     * Additional props to be passed to the `TextInput` component.
+     */
+    textInputProps?: TextInputProps;
+
+    /**
+     * The type of characters allowed in the OTP entry.
+     */
+    type?: "alpha" | "numeric" | "alphanumeric";
+
+    /**
+     * The placeholder text to be displayed in the OTP entry.
+     */
+    placeholder?: string;
   }
 
   export interface OtpInputRef {
@@ -64,7 +115,7 @@ declare module "OTPInput" {
     inputsContainerStyle?: ViewStyle;
 
     /**
-     * Custom styles for the container that wraps each individual digit in the OTP entry.
+     * Custom styles for the container(s) that wraps each individual digit in the OTP entry.
      */
     pinCodeContainerStyle?: ViewStyle;
 
@@ -77,5 +128,25 @@ declare module "OTPInput" {
      * Custom styles for the focus stick, which indicates the focused input field.
      */
     focusStickStyle?: ViewStyle;
+
+    /**
+     * Custom styles for the container(s) of the filled digit in the OTP entry.
+     */
+    filledPinCodeContainerStyle?: ViewStyle;
+
+    /**
+     * Custom styles for the container of the focused digit in the OTP entry.
+     */
+    focusedPinCodeContainerStyle?: ViewStyle;
+
+    /**
+     * Custom styles for the container(s) of the disabled digit in the OTP entry.
+     */
+    disabledPinCodeContainerStyle?: ViewStyle;
+
+    /**
+     * Custom styles for the placeholder text in the OTP entry.
+     */
+    placeholderTextStyle?: TextStyle;
   }
 }
