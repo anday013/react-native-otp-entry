@@ -60,7 +60,16 @@ yarn add react-native-otp-entry
    <OtpInput
      numberOfDigits={6}
      focusColor="green"
+     autoFocus={false}
+     hideStick={true}
+     placeholder="******"
+     blurOnFilled={true}
+     disabled={false}
+     type="numeric"
+     secureTextEntry={false}
      focusStickBlinkingDuration={500}
+     onFocus={() => console.log("Focused")}
+     onBlur={() => console.log("Blurred")}
      onTextChange={(text) => console.log(text)}
      onFilled={(text) => console.log(`OTP is ${text}`)}
      textInputProps={{
@@ -72,6 +81,9 @@ yarn add react-native-otp-entry
        pinCodeTextStyle: styles.pinCodeText,
        focusStickStyle: styles.focusStick,
        focusedPinCodeContainerStyle: styles.activePinCodeContainer,
+       placeholderTextStyle: styles.placeholderText,
+       filledPinCodeContainerStyle: styles.filledPinCodeContainer,
+       disabledPinCodeContainerStyle: styles.disabledPinCodeContainer,
      }}
    />
    ```
