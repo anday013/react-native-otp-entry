@@ -1,4 +1,4 @@
-import { act, renderHook, waitFor } from "@testing-library/react-native";
+import { act, renderHook } from "@testing-library/react-native";
 import * as React from "react";
 import { Keyboard } from "react-native";
 import { OtpInputProps } from "../OtpInput.types";
@@ -299,78 +299,14 @@ describe("useOtpInput", () => {
   });
 
   describe("Placeholder", () => {
-    test("should call setIsPlaceholderActive with `true`", () => {
-      const mockSetState = jest.fn();
-      jest.spyOn(React, "useState").mockImplementation(() => [false, mockSetState]);
-
-      renderUseOtInput({ placeholder: "00000000" });
-
-      waitFor(() => {
-        expect(mockSetState).toBeCalledWith(true);
-      });
+    test("should be populated to numberOfDigits if has only single char", () => {
+      const { result } = renderUseOtInput({ placeholder: "2", numberOfDigits: 5 });
+      expect(result.current.models.placeholder).toBe("22222");
     });
 
-    test("should set isPlaceholderActive to 'true' when placeholder is provided and input is not focused and text is empty", () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-
-      waitFor(() => {
-        expect(result.current.models.isPlaceholderActive).toBe(true);
-      });
-    });
-
-    test("should set isPlaceholderActive to 'true' when placeholder is provided and text is empty", () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleFocus();
-      result.current.actions.handleBlur();
-
-      waitFor(() => {
-        expect(result.current.models.isPlaceholderActive).toBe(true);
-      });
-    });
-
-    test("should set isPlaceholderActive to 'false' when placeholder is provided and input is focused", () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleFocus();
-      waitFor(() => {
-        expect(result.current.models.isPlaceholderActive).toBe(false);
-      });
-    });
-
-    test("should set isPlaceholderActive to 'false' when placeholder is provided and text is not empty", () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleTextChange("123456");
-      waitFor(() => {
-        expect(result.current.models.isPlaceholderActive).toBe(false);
-      });
-    });
-
-    test("should set isPlaceholderActive to 'false' when placeholder is provided and input is focused and text is not empty", async () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleTextChange("123456");
-      result.current.actions.handleFocus();
-      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(false));
-    });
-
-    test("should set isPlaceholderActive to 'false' when placeholder is provided and input is not focused and text is not empty", async () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleTextChange("123456");
-      result.current.actions.handleBlur();
-      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(false));
-    });
-
-    test("should set isPlaceholderActive to 'true' when placeholder is provided and input is focused and text is empty", async () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleFocus();
-      result.current.actions.handleBlur();
-      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(true));
-    });
-
-    test("should set isPlaceholderActive to 'true' when placeholder is provided and input is not focused and text is empty", async () => {
-      const { result } = renderUseOtInput({ placeholder: "00000000" });
-      result.current.actions.handleTextChange("123456");
-      result.current.actions.handleTextChange("");
-      result.current.actions.handleBlur();
-      waitFor(() => expect(result.current.models.isPlaceholderActive).toBe(true));
+    test("should not be populated if more than one", () => {
+      const { result } = renderUseOtInput({ placeholder: "22", numberOfDigits: 3 });
+      expect(result.current.models.placeholder).toBe("22");
     });
   });
 });
