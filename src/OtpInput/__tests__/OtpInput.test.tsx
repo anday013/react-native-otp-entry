@@ -265,13 +265,43 @@ describe("OtpInput", () => {
     });
   });
   describe("Placeholder", () => {
-    test("should show placeholder if text is empty", () => {
-      renderOtpInput({ placeholder: "000000" });
+    test("should cover the whole input if placeholder is set with one char", async () => {
+      renderOtpInput({ placeholder: "0", hideStick: true });
 
       const inputs = screen.getAllByTestId("otp-input");
-      inputs.forEach((input) => {
-        waitFor(() => expect(input).toHaveTextContent("0"));
-      });
+      await Promise.all(
+        inputs.map(async (input) => {
+          await waitFor(() => expect(input).toHaveTextContent("0"));
+        })
+      );
+    });
+
+    test("should show placeholder if text is empty", async () => {
+      renderOtpInput({ placeholder: "000000", hideStick: true });
+
+      const inputs = screen.getAllByTestId("otp-input");
+      await Promise.all(
+        inputs.map(async (input) => {
+          await waitFor(() => expect(input).toHaveTextContent("0"));
+        })
+      );
+    });
+
+    test("should show values for filled part", async () => {
+      renderOtpInput({ placeholder: "000000", hideStick: true });
+      const otp = "0124";
+
+      const hiddenInput = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(hiddenInput, otp);
+
+      const inputs = screen.getAllByTestId("otp-input");
+      await Promise.all(
+        inputs.map(async (input, index) => {
+          await waitFor(() =>
+            expect(input).toHaveTextContent(index < otp.length ? otp[index].toString() : "0")
+          );
+        })
+      );
     });
 
     test("should hide placeholder if text is not empty", () => {
@@ -286,7 +316,7 @@ describe("OtpInput", () => {
     });
 
     test("should hide placeholder if input is focused", () => {
-      renderOtpInput({ placeholder: "000000" });
+      renderOtpInput({ placeholder: "000000", hideStick: true });
 
       const input = screen.getByTestId("otp-input-hidden");
       fireEvent.press(input);
@@ -296,8 +326,8 @@ describe("OtpInput", () => {
       expect(placeholder).toBeFalsy();
     });
 
-    test("should show placeholder if input is blurred and text is empty", () => {
-      renderOtpInputWithExtraInput({ placeholder: "000000" });
+    test("should show placeholder if input is blurred and text is empty", async () => {
+      renderOtpInputWithExtraInput({ placeholder: "000000", hideStick: true });
 
       const input = screen.getByTestId("otp-input-hidden");
       const otherInput = screen.getByTestId("other-input");
@@ -306,13 +336,15 @@ describe("OtpInput", () => {
       fireEvent.press(otherInput);
 
       const inputs = screen.getAllByTestId("otp-input");
-      inputs.forEach((input) => {
-        waitFor(() => expect(input).toHaveTextContent("0"));
-      });
+      await Promise.all(
+        inputs.map(async (input) => {
+          await waitFor(() => expect(input).toHaveTextContent("0"));
+        })
+      );
     });
 
     test("should hide placeholder if input is blurred and text is not empty", () => {
-      renderOtpInputWithExtraInput({ placeholder: "000000" });
+      renderOtpInputWithExtraInput({ placeholder: "000000", hideStick: true });
 
       const input = screen.getByTestId("otp-input-hidden");
       const otherInput = screen.getByTestId("other-input");
@@ -326,16 +358,16 @@ describe("OtpInput", () => {
       expect(placeholder).toBeFalsy();
     });
 
-    test('should leave empty spaces if "placeholder" is shorter than "numberOfDigits"', () => {
-      renderOtpInput({ placeholder: "123" });
+    test('should leave empty spaces if "placeholder" is shorter than "numberOfDigits"', async () => {
+      renderOtpInput({ placeholder: "123", hideStick: true });
 
       const inputs = screen.getAllByTestId("otp-input");
-      waitFor(() => inputs[0].toHaveTextContent("1"));
-      waitFor(() => expect(inputs[1]).toHaveTextContent("2"));
-      waitFor(() => expect(inputs[2]).toHaveTextContent("3"));
-      waitFor(() => expect(inputs[3]).toHaveTextContent(" "));
-      waitFor(() => expect(inputs[4]).toHaveTextContent(" "));
-      waitFor(() => expect(inputs[5]).toHaveTextContent(" "));
+      expect(inputs[0]).toHaveTextContent("1");
+      expect(inputs[1]).toHaveTextContent("2");
+      expect(inputs[2]).toHaveTextContent("3");
+      expect(inputs[3]).toHaveTextContent("");
+      expect(inputs[4]).toHaveTextContent("");
+      expect(inputs[5]).toHaveTextContent("");
     });
   });
 });
