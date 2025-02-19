@@ -118,6 +118,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         testID="otp-input-hidden"
         onFocus={handleFocus}
         onBlur={handleBlur}
+        caretHidden={Platform.OS === "ios"}
         {...textInputProps}
         style={[styles.hiddenInput, textInputProps?.style]}
       />
