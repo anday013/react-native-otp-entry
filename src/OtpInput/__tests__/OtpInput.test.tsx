@@ -200,6 +200,35 @@ describe("OtpInput", () => {
         expect(input.props.inputMode).toBe("text");
       }
     );
+
+    describe("caretHidden", () => {
+      test("should be true on iOS", () => {
+        Platform.OS = "ios";
+        renderOtpInput();
+
+        const input = screen.getByTestId("otp-input-hidden");
+
+        expect(input.props.caretHidden).toBe(true);
+      });
+
+      test("should be false on android", () => {
+        Platform.OS = "android";
+        renderOtpInput();
+
+        const input = screen.getByTestId("otp-input-hidden");
+
+        expect(input.props.caretHidden).toBe(false);
+      });
+
+      test("should be false on web", () => {
+        Platform.OS = "web";
+        renderOtpInput();
+
+        const input = screen.getByTestId("otp-input-hidden");
+
+        expect(input.props.caretHidden).toBe(false);
+      });
+    });
   });
   describe("Logic", () => {
     test("should split text on screen from the text written in the hidden input", () => {
