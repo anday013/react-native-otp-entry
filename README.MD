@@ -8,6 +8,8 @@
 
 `react-native-otp-entry` is a simple and highly customizable React Native component for entering OTP (One-Time Password) on iOS, Android, and Web. It provides an intuitive and user-friendly interface for inputting one-time passwords in your React Native applications.
 
+> **Looking for a Phone Number input component?** Check out [react-native-phone-entry](https://github.com/anday013/react-native-phone-entry) - a simple and fully modifiable Phone Number Input Component for React Native that provides an intuitive interface for entering and validating international phone numbers.
+
 ![Demo](otp_demo.gif)
 
 ## Features
