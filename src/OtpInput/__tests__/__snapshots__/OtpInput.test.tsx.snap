@@ -143,6 +143,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
+          undefined,
         ]
       }
     />
@@ -201,6 +202,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
+          undefined,
         ]
       }
     />
@@ -259,6 +261,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
+          undefined,
         ]
       }
     />
@@ -317,6 +320,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
+          undefined,
         ]
       }
     />
@@ -375,6 +379,7 @@ exports[`OtpInput UI should render correctly 1`] = `
           },
           undefined,
           {},
+          undefined,
         ]
       }
     />

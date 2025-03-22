@@ -22,6 +22,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     secureTextEntry = false,
     theme = {},
     textInputProps,
+    textProps,
     type = "numeric",
   } = props;
   const {
@@ -91,10 +92,13 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
                 />
               ) : (
                 <Text
+                  {...textProps}
+                  testID={textProps?.testID ? `${textProps.testID}-${index}` : undefined}
                   style={[
                     styles.codeText,
                     pinCodeTextStyle,
                     isPlaceholderCell ? placeholderStyle : {},
+                    textProps?.style,
                   ]}
                 >
                   {char && secureTextEntry ? "•" : char}
