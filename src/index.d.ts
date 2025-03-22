@@ -1,5 +1,5 @@
 declare module "OTPInput" {
-  import { ColorValue, TextInputProps, TextStyle, ViewStyle } from "react-native";
+  import { ColorValue, TextInputProps, TextProps, TextStyle, ViewStyle } from "react-native";
 
   export interface OtpEntryProps {
     /**
@@ -73,6 +73,12 @@ declare module "OTPInput" {
      * Additional props to be passed to the `TextInput` component.
      */
     textInputProps?: TextInputProps;
+
+    /**
+     * Additional props to be passed to the `Text` component that renders each digit.
+     * Allows customizing text behavior beyond styling (which is handled by pinCodeTextStyle in theme).
+     */
+    textProps?: TextProps;
 
     /**
      * The type of characters allowed in the OTP entry.
