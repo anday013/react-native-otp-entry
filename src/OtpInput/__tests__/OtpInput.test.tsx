@@ -164,6 +164,56 @@ describe("OtpInput", () => {
       expect(inputs[0]).toHaveStyle({ borderBottomColor: "red" });
     });
 
+    test("should pass textProps to Text component", () => {
+      renderOtpInput({
+        numberOfDigits: 3,
+        textProps: {
+          testID: "custom-text-id",
+          numberOfLines: 1,
+          accessibilityLabel: "OTP digit",
+          allowFontScaling: false,
+        },
+      });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "123");
+
+      ["1", "2", "3"].forEach((digit, index) => {
+        const digitElement = screen.getByTestId(`custom-text-id-${index}`);
+        expect(digitElement).toBeTruthy();
+        expect(digitElement.props.numberOfLines).toBe(1);
+        expect(digitElement.props.accessibilityLabel).toBe("OTP digit");
+        expect(digitElement.props.allowFontScaling).toBe(false);
+        expect(digitElement).toHaveTextContent(digit);
+      });
+    });
+
+    test("should correctly merge textProps with theme styles", () => {
+      renderOtpInput({
+        numberOfDigits: 2,
+        textProps: {
+          testID: "custom-styled-text",
+          style: { fontWeight: "bold" },
+        },
+        theme: {
+          pinCodeTextStyle: { fontSize: 20, color: "blue" },
+        },
+      });
+
+      const input = screen.getByTestId("otp-input-hidden");
+      fireEvent.changeText(input, "12");
+      const textElement = screen.getByTestId("custom-styled-text-0");
+      // Check that our custom style from textProps.style is applied
+      const styles = textElement.props.style;
+      const customStyleApplied = styles.some((style: any) => style.fontWeight === "bold");
+      expect(customStyleApplied).toBe(true);
+      // Check that theme styles are also applied
+      const themeStyleApplied = styles.some(
+        (style: any) => style.fontSize === 20 && style.color === "blue"
+      );
+      expect(themeStyleApplied).toBe(true);
+    });
+
     test('autoComplete should be set "sms-otp" on Android', () => {
       Platform.OS = "android";
       renderOtpInput();
@@ -361,7 +411,7 @@ describe("OtpInput", () => {
       const input = screen.getByTestId("otp-input-hidden");
       const otherInput = screen.getByTestId("other-input");
       fireEvent.press(input);
-      // Blur the input
+      fireEvent.changeText(input, "");
       fireEvent.press(otherInput);
 
       const inputs = screen.getAllByTestId("otp-input");
@@ -379,7 +429,6 @@ describe("OtpInput", () => {
       const otherInput = screen.getByTestId("other-input");
       fireEvent.press(input);
       fireEvent.changeText(input, "123456");
-      // Blur the input
       fireEvent.press(otherInput);
 
       const placeholder = screen.queryByText("000000");

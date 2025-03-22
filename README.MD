@@ -75,6 +75,11 @@ yarn add react-native-otp-entry
      textInputProps={{
        accessibilityLabel: "One-Time Password",
      }}
+     textProps={{
+       accessibilityRole: "text",
+       accessibilityLabel: "OTP digit",
+       allowFontScaling: false,
+     }}
      theme={{
        containerStyle: styles.container,
        pinCodeContainerStyle: styles.pinCodeContainer,
@@ -97,6 +102,7 @@ The `react-native-otp-entry` component accepts the following props:
 | `numberOfDigits`             | number                                 | The number of digits to be displayed in the OTP entry.                                                         |
 | `theme`                      | Theme                                  | Custom styles for each element. (See below)                                                                    |
 | `textInputProps`             | TextInputProps                         | Extra props passed to underlying hidden TextInput (see: <https://reactnative.dev/docs/textinput>)              |
+| `textProps`                  | TextProps                              | Props passed to the Text component that renders each digit (see: <https://reactnative.dev/docs/text>)          |
 | `autoFocus`                  | boolean                                | _Default: true_. Sets autofocus.                                                                               |
 | `focusColor`                 | ColorValue                             | The color of the input field border and stick when it is focused.                                              |
 | `placeholder`                | string                                 | Placeholder value to the input.                                                                                |
