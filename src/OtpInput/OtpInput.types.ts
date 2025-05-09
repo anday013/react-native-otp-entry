@@ -18,6 +18,7 @@ export interface OtpInputProps {
   textProps?: TextProps;
   type?: "alpha" | "numeric" | "alphanumeric";
   placeholder?: string;
+  variant?: "normal" | "bottom-sheet";
 }
 
 export interface OtpInputRef {

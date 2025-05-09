@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
-import { Keyboard, TextInput } from "react-native";
+import { Keyboard } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
+import { TextInput } from "react-native-gesture-handler";
 
 const regexMap = {
   alpha: /[^a-zA-Z]/,

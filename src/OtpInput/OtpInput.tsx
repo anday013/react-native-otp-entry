@@ -5,6 +5,7 @@ import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
 import { useOtpInput } from "./useOtpInput";
+import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
@@ -13,6 +14,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
+    variant = "normal",
     disabled,
     numberOfDigits = 6,
     autoFocus = true,
@@ -65,6 +67,8 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     ...(!!placeholder ? placeholderTextStyle : []),
   };
 
+  const InputComponent = variant === "bottom-sheet" ? BottomSheetTextInput : TextInput;
+
   return (
     <View style={[styles.container, containerStyle, inputsContainerStyle]}>
       {Array(numberOfDigits)
@@ -107,7 +111,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
             </Pressable>
           );
         })}
-      <TextInput
+      <InputComponent
         value={text}
         onChangeText={handleTextChange}
         maxLength={numberOfDigits}
