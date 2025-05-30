@@ -48,6 +48,17 @@ describe("useOtpInput", () => {
     });
   });
 
+  test("blur() should blur input", () => {
+    jest.spyOn(React, "useRef").mockReturnValueOnce({ current: { blur: jest.fn() } } as any);
+
+    const { result } = renderUseOtInput();
+    result.current.actions.blur();
+
+    act(() => {
+      expect(result.current.models.inputRef.current?.blur).toHaveBeenCalled();
+    });
+  });
+
   test("setTextWithRef() should only call setText the first 'numberOfDigits' characters", () => {
     jest.spyOn(React, "useState").mockImplementation(() => ["", jest.fn()]);
     const { result } = renderUseOtInput();

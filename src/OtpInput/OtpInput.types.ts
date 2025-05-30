@@ -24,6 +24,7 @@ export interface OtpInputRef {
   clear: () => void;
   focus: () => void;
   setValue: (value: string) => void;
+  blur: () => void;
 }
 
 export interface Theme {

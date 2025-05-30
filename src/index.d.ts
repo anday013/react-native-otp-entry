@@ -107,6 +107,11 @@ declare module "OTPInput" {
      * @param value - The value to be set.
      */
     setValue: (value: string) => void;
+
+    /**
+     * Blur the OTP input.
+     */
+    blur: () => void;
   }
 
   export interface Theme {

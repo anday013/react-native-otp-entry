@@ -144,6 +144,7 @@ The `react-native-otp-entry` component exposes these functions with `ref`:
 | ---------- | ------------------------ | ---------------------------------- |
 | `clear`    | () => void;              | Clears the value of the OTP input. |
 | `focus`    | () => void;              | Focus of the OTP input.            |
+| `blur`     | () => void;              | Blurs the OTP input.               |
 | `setValue` | (value: string) => void; | Sets the value of the OTP input.   |
 
 ## License
