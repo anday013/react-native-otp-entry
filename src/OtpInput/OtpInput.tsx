@@ -9,7 +9,7 @@ import { useOtpInput } from "./useOtpInput";
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
     models: { text, inputRef, focusedInputIndex, isFocused, placeholder },
-    actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur },
+    actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur, blur },
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
@@ -37,7 +37,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     placeholderTextStyle,
   } = theme;
 
-  useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef }));
+  useImperativeHandle(ref, () => ({ clear, focus, setValue: setTextWithRef, blur }));
 
   const generatePinCodeContainerStyle = (isFocusedContainer: boolean, char: string) => {
     const stylesArray = [styles.codeContainer, pinCodeContainerStyle];

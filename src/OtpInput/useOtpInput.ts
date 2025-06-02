@@ -61,6 +61,10 @@ export const useOtpInput = ({
     inputRef.current?.focus();
   };
 
+  const blur = () => {
+    inputRef.current?.blur();
+  };
+
   const handleFocus = () => {
     setIsFocused(true);
     onFocus?.();
@@ -73,7 +77,7 @@ export const useOtpInput = ({
 
   return {
     models: { text, inputRef, focusedInputIndex, isFocused, placeholder },
-    actions: { handlePress, handleTextChange, clear, focus, handleFocus, handleBlur },
+    actions: { handlePress, handleTextChange, clear, focus, blur, handleFocus, handleBlur },
     forms: { setText, setTextWithRef },
   };
 };
