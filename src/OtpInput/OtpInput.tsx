@@ -23,6 +23,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
     theme = {},
     textInputProps,
     textProps,
+    buttonProps,
     type = "numeric",
   } = props;
   const {
@@ -82,7 +83,13 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
               disabled={disabled}
               onPress={handlePress}
               style={generatePinCodeContainerStyle(isFocusedContainer, char)}
-              testID="otp-input"
+              {...buttonProps}
+              testID={buttonProps?.testID ? `${buttonProps.testID}${index}` : `otp-input-${index}`}
+              {...(Platform.OS === "android" && {
+                accessibilityLabel: buttonProps?.testID
+                  ? `${buttonProps.testID}${index}`
+                  : `otp-input-${index}`,
+              })}
             >
               {isFocusedInput && !hideStick ? (
                 <VerticalStick
@@ -93,7 +100,12 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
               ) : (
                 <Text
                   {...textProps}
-                  testID={textProps?.testID ? `${textProps.testID}-${index}` : undefined}
+                  testID={textProps?.testID ? `${textProps.testID}${index}` : undefined}
+                  {...(Platform.OS === "android" && {
+                    accessibilityLabel: textProps?.testID
+                      ? `${textProps.testID}${index}`
+                      : `otp-input-text-${index}`,
+                  })}
                   style={[
                     styles.codeText,
                     pinCodeTextStyle,
@@ -120,6 +132,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         aria-disabled={disabled}
         editable={!disabled}
         testID="otp-input-hidden"
+        {...(Platform.OS === "android" && { accessibilityLabel: "otp-input-hidden" })}
         onFocus={handleFocus}
         onBlur={handleBlur}
         caretHidden={Platform.OS === "ios"}
