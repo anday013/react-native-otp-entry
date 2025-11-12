@@ -18,13 +18,13 @@ export interface OtpInputProps {
   textProps?: TextProps;
   type?: "alpha" | "numeric" | "alphanumeric";
   placeholder?: string;
+  defaultValue?: string;
 }
 
 export interface OtpInputRef {
   clear: () => void;
   focus: () => void;
   setValue: (value: string) => void;
-  blur: () => void;
 }
 
 export interface Theme {
