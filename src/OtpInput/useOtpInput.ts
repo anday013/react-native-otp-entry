@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { Keyboard, TextInput } from "react-native";
 import { OtpInputProps } from "./OtpInput.types";
 
@@ -19,18 +19,24 @@ export const useOtpInput = ({
   onFocus,
   onBlur,
   placeholder: _placeholder,
+  defaultValue = "", // Default value support
 }: OtpInputProps) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(defaultValue.slice(0, numberOfDigits)); // Initialize with defaultValue
   const [isFocused, setIsFocused] = useState(autoFocus);
   const inputRef = useRef<TextInput>(null);
   const focusedInputIndex = text.length;
+
   const placeholder = useMemo(
     () => (_placeholder?.length === 1 ? _placeholder.repeat(numberOfDigits) : _placeholder),
     [_placeholder, numberOfDigits]
   );
 
+  useEffect(() => {
+    // Ensure state updates if defaultValue changes dynamically
+    setText(defaultValue.slice(0, numberOfDigits));
+  }, [defaultValue, numberOfDigits]);
+
   const handlePress = () => {
-    // To fix bug when keyboard is not popping up after being dismissed
     if (!Keyboard.isVisible()) {
       Keyboard.dismiss();
     }
@@ -40,17 +46,20 @@ export const useOtpInput = ({
   const handleTextChange = (value: string) => {
     if (type && regexMap[type].test(value)) return;
     if (disabled) return;
+
     setText(value);
     onTextChange?.(value);
+
     if (value.length === numberOfDigits) {
       onFilled?.(value);
-      blurOnFilled && inputRef.current?.blur();
+      if (blurOnFilled) inputRef.current?.blur();
     }
   };
 
   const setTextWithRef = (value: string) => {
-    const normalizedValue = value.length > numberOfDigits ? value.slice(0, numberOfDigits) : value;
-    handleTextChange(normalizedValue);
+    const normalizedValue = value.slice(0, numberOfDigits);
+    setText(normalizedValue);
+    onTextChange?.(normalizedValue);
   };
 
   const clear = () => {
@@ -59,10 +68,6 @@ export const useOtpInput = ({
 
   const focus = () => {
     inputRef.current?.focus();
-  };
-
-  const blur = () => {
-    inputRef.current?.blur();
   };
 
   const handleFocus = () => {
@@ -77,7 +82,7 @@ export const useOtpInput = ({
 
   return {
     models: { text, inputRef, focusedInputIndex, isFocused, placeholder },
-    actions: { handlePress, handleTextChange, clear, focus, blur, handleFocus, handleBlur },
-    forms: { setText, setTextWithRef },
+    actions: { handlePress, handleTextChange, clear, focus, handleFocus, handleBlur },
+    forms: { setTextWithRef },
   };
 };
