@@ -399,12 +399,14 @@ exports[`OtpInput UI should render correctly 1`] = `
       [
         {
           "bottom": 0,
-          "color": "transparent",
           "left": 0,
-          "opacity": 0.02,
           "position": "absolute",
           "right": 0,
           "top": 0,
+        },
+        {
+          "color": "transparent",
+          "opacity": 0.02,
         },
         undefined,
       ]

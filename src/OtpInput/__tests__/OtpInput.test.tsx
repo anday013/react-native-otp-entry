@@ -73,6 +73,20 @@ describe("OtpInput", () => {
       expect(input.props.autoFocus).toBe(false);
     });
 
+    test("should keep hidden input absolutely positioned to avoid affecting OTP cell spacing", () => {
+      renderOtpInput();
+
+      const input = screen.getByTestId("otp-input-hidden");
+
+      expect(input).toHaveStyle({
+        position: "absolute",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      });
+    });
+
     test("should not focus if disabled is true", () => {
       renderOtpInput({
         disabled: true,

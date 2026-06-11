@@ -1,6 +1,6 @@
 import * as React from "react";
 import { forwardRef, useImperativeHandle } from "react";
-import { Platform, Pressable, Text, TextInput, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { styles } from "./OtpInput.styles";
 import { OtpInputProps, OtpInputRef } from "./OtpInput.types";
 import { VerticalStick } from "./VerticalStick";
@@ -124,7 +124,7 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         onBlur={handleBlur}
         caretHidden={Platform.OS === "ios"}
         {...textInputProps}
-        style={[styles.hiddenInput, textInputProps?.style]}
+        style={[StyleSheet.absoluteFill, styles.hiddenInput, textInputProps?.style]}
       />
     </View>
   );
