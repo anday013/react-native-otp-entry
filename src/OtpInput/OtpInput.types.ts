@@ -1,4 +1,11 @@
-import { ColorValue, TextInputProps, TextProps, TextStyle, ViewStyle } from "react-native";
+import {
+  ColorValue,
+  TextInputProps,
+  TextProps,
+  TextStyle,
+  ViewStyle,
+  PressableProps,
+} from "react-native";
 
 export interface OtpInputProps {
   numberOfDigits?: number;
@@ -16,6 +23,7 @@ export interface OtpInputProps {
   disabled?: boolean;
   textInputProps?: TextInputProps;
   textProps?: TextProps;
+  buttonProps?: PressableProps;
   type?: "alpha" | "numeric" | "alphanumeric";
   placeholder?: string;
 }
