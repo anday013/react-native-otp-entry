@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dm/react-native-otp-entry.svg?&kill_cache=1)]()
 [![install size](https://packagephobia.com/badge?p=react-native-otp-entry)](https://packagephobia.com/result?p=react-native-otp-entry)
 [![cov](https://anday013.github.io/react-native-otp-entry/badges/coverage.svg?&kill_cache=1)](https://github.com/anday013/react-native-otp-entry/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?&kill_cache=1)](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?&kill_cache=1)](https://github.com/anday013/react-native-otp-entry/blob/main/LICENSE)
 
 `react-native-otp-entry` is a simple and highly customizable React Native component for entering OTP (One-Time Password) on iOS, Android, and Web. It provides an intuitive and user-friendly interface for inputting one-time passwords in your React Native applications.
 
@@ -16,7 +16,7 @@
 
 - Simple and easy-to-use OTP input component.
 - Highly customizable appearance and styling.
-- Supports autofill
+- Supports autofill and placeholder text.
 - Effortlessly integrates with **React Native**, **Expo**, and **React Native Web** platforms.
 - Fully typed with TypeScript.
 - Fully covered with unit tests.
@@ -53,7 +53,11 @@ yarn add react-native-otp-entry
 2. Render the `OtpInput` component in your screen/component:
 
    ```jsx
-   <OtpInput numberOfDigits={6} onTextChange={(text) => console.log(text)} />
+   <OtpInput 
+     numberOfDigits={6} 
+     onTextChange={(text) => console.log(text)} 
+     onFilled={(text) => console.log(`OTP completed: ${text}`)}
+   />
    ```
 
 3. Customize the styling as per your requirements:
@@ -149,7 +153,7 @@ The `react-native-otp-entry` component exposes these functions with `ref`:
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/anday013/react-native-otp-entry/blob/main/LICENSE).
 
 ## Contributing
 
