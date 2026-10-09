@@ -14,24 +14,29 @@ export const VerticalStick: React.FC<VerticalStickProps> = memo(
     const opacityAnim = useRef(new Animated.Value(1)).current;
 
     useEffect(() => {
-      Animated.loop(
+      const animation = Animated.loop(
         Animated.sequence([
           Animated.timing(opacityAnim, {
             toValue: 0,
             useNativeDriver: true,
+            isInteraction: false,
             duration: focusStickBlinkingDuration,
           }),
           Animated.timing(opacityAnim, {
             toValue: 1,
             useNativeDriver: true,
+            isInteraction: false,
             duration: focusStickBlinkingDuration,
           }),
         ]),
         {
           iterations: -1,
         }
-      ).start();
-    }, []);
+      );
+      animation.start();
+
+      return () => animation.stop();
+    }, [focusStickBlinkingDuration, opacityAnim]);
 
     return (
       <Animated.View style={{ opacity: opacityAnim }}>

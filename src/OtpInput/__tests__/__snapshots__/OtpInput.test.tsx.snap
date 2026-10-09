@@ -38,6 +38,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -113,6 +114,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -172,6 +174,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -231,6 +234,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -290,6 +294,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -349,6 +354,7 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
@@ -394,7 +400,17 @@ exports[`OtpInput UI should render correctly 1`] = `
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}
+    onLayout={[Function]}
+    onPressIn={[Function]}
+    onPressOut={[Function]}
+    onSelectionChange={[Function]}
     secureTextEntry={false}
+    selection={
+      {
+        "end": 0,
+        "start": 0,
+      }
+    }
     style={
       [
         {

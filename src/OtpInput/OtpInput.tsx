@@ -8,8 +8,21 @@ import { useOtpInput } from "./useOtpInput";
 
 export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
   const {
-    models: { text, inputRef, focusedInputIndex, isFocused, placeholder },
-    actions: { clear, handlePress, handleTextChange, focus, handleFocus, handleBlur, blur },
+    models: { text, inputRef, focusedInputIndex, isFocused, placeholder, selection },
+    actions: {
+      clear,
+      handlePress,
+      handleTextChange,
+      focus,
+      handleFocus,
+      handleBlur,
+      blur,
+      handleCellLayout,
+      handleInputLayout,
+      handleInputPressIn,
+      handleInputPressOut,
+      handleSelectionChange,
+    },
     forms: { setTextWithRef },
   } = useOtpInput(props);
   const {
@@ -73,18 +86,20 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
           const isPlaceholderCell = !!placeholder && !text?.[index];
           const char = isPlaceholderCell ? placeholder?.[index] || " " : text[index];
           const isFocusedInput = index === focusedInputIndex && !disabled && Boolean(isFocused);
-          const isFilledLastInput = text.length === numberOfDigits && index === text.length - 1;
-          const isFocusedContainer = isFocusedInput || (isFilledLastInput && Boolean(isFocused));
 
           return (
             <Pressable
-              key={`${char}-${index}`}
+              key={index}
               disabled={disabled}
-              onPress={handlePress}
-              style={generatePinCodeContainerStyle(isFocusedContainer, char)}
-              testID="otp-input"
+              onPress={() => handlePress(index)}
+              onLayout={(event) => handleCellLayout(index, event)}
+              style={generatePinCodeContainerStyle(isFocusedInput, text[index])}
+              testID={textInputProps?.testID ? `${textInputProps.testID}-${index}` : "otp-input"}
+              nativeID={
+                textInputProps?.nativeID ? `${textInputProps.nativeID}-${index}` : undefined
+              }
             >
-              {isFocusedInput && !hideStick ? (
+              {isFocusedInput && !text[index] && !hideStick ? (
                 <VerticalStick
                   focusColor={focusColor}
                   style={focusStickStyle}
@@ -109,7 +124,6 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         })}
       <TextInput
         value={text}
-        onChangeText={handleTextChange}
         maxLength={numberOfDigits}
         inputMode={type === "numeric" ? type : "text"}
         textContentType="oneTimeCode"
@@ -124,6 +138,15 @@ export const OtpInput = forwardRef<OtpInputRef, OtpInputProps>((props, ref) => {
         onBlur={handleBlur}
         caretHidden={Platform.OS === "ios"}
         {...textInputProps}
+        selection={selection}
+        onChangeText={(value) => {
+          handleTextChange(value);
+          textInputProps?.onChangeText?.(value);
+        }}
+        onLayout={handleInputLayout}
+        onPressIn={handleInputPressIn}
+        onPressOut={handleInputPressOut}
+        onSelectionChange={handleSelectionChange}
         style={[StyleSheet.absoluteFill, styles.hiddenInput, textInputProps?.style]}
       />
     </View>

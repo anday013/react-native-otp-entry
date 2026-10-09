@@ -147,6 +147,57 @@ The `react-native-otp-entry` component exposes these functions with `ref`:
 | `blur`     | () => void;              | Blurs the OTP input.               |
 | `setValue` | (value: string) => void; | Sets the value of the OTP input.   |
 
+## Editing and pasting digits
+
+Tap a filled cell to select its character, then type to replace it without deleting
+the following digits. Tapping an empty cell places the cursor after the existing
+text. The selected digit remains visible (or masked with `secureTextEntry`).
+
+Pasting uses the current selection and the available space up to `numberOfDigits`;
+it does not automatically replace the entire code. After insertion the cursor is
+placed after the inserted text, so Backspace can delete it normally. Native
+long-press selection and paste menus remain available.
+
+`clear()` resets the cursor to the beginning, and `setValue()` places it at the end
+of the assigned value. `onFilled` and `blurOnFilled` also apply when a replacement
+leaves all cells filled. If you provide `textInputProps.selection`, that selection
+remains controlled by your application; update it in response to native events.
+
+## Multiple OTP inputs and focus
+
+`autoFocus` defaults to `true`. When rendering more than one `OtpInput` on a screen,
+set `autoFocus={false}` on the inputs that should not receive initial focus:
+
+```jsx
+<OtpInput autoFocus={true} />
+<OtpInput autoFocus={false} />
+```
+
+For inputs inside a modal or a transitioning screen, use `autoFocus={false}` and
+call `ref.current?.focus()` when the modal or screen is ready (for example, from
+React Native Modal's `onShow`). The visible focus indicator alone does not confirm
+that the native keyboard has opened; keyboard behavior also depends on the host
+screen, platform, and keyboard.
+
+## Unique identifiers for automation
+
+Use a different `textInputProps.testID` or `textInputProps.nativeID` for each OTP
+instance. The hidden input retains the exact identifier, and each pressable digit
+container receives the same identifier followed by its zero-based index:
+
+```jsx
+<OtpInput
+  numberOfDigits={4}
+  textInputProps={{ testID: "login-code", nativeID: "login-code" }}
+/>
+```
+
+This produces `login-code` for the hidden input and `login-code-0` through
+`login-code-3` for the digit containers. Enter text through the hidden input.
+Without a custom `testID`, the existing `otp-input` digit selectors and
+`otp-input-hidden` input selector are preserved. `textProps.testID` continues to
+identify digit text separately, and accessibility labels are not changed.
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/your-username/react-native-otp-entry/blob/main/LICENSE).
